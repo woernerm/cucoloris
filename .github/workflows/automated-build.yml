@@ -1,0 +1,103 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Automated Build
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+    - 'docs/**'
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+    - 'docs/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade build
+        python -m pip install flake8 pytest
+        python -m pip install kivy[base]
+        python -m pip install mkdocs
+        python -m pip install pydoc-markdown
+        python -m pip install mkdocs-bootstrap4
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Build wheels
+      run: |
+        python -m build
+    - name: Create documentation
+      run: |
+        pydoc-markdown
+        cd ./build/docs/
+        mkdocs build
+        cd ../../
+        if [ -d docs ]; then rm -r docs; fi
+        cp -r ./build/docs/docs/ ./docs
+    - name: Commit and push changes
+      uses: EndBug/add-and-commit@v7 # You can change this to use a specific version
+      with:
+        # The arguments for the `git add` command (see the paragraph below for more info)
+        # Default: '.'
+        add: 'docs'
+        
+        # The name of the user that will be displayed as the author of the commit
+        # Default: author of the commit that triggered the run
+        author_name: Automated Build
+
+        # The email of the user that will be displayed as the author of the commit
+        # Default: author of the commit that triggered the run
+        author_email: 61889355+woernerm@users.noreply.github.com
+
+        # Name of the branch to use, if different from the one that triggered the workflow
+        # Default: the branch that triggered the run
+        branch: main
+
+        # The local path to the directory where your repository is located. You should use actions/checkout first to set it up
+        # Default: '.'
+        cwd: '.'
+
+        # The message for the commit
+        # Default: 'Commit from GitHub Actions (name of the workflow)'
+        message: 'Commit from Automated Build'
+
+        # The flag used on the pull strategy
+        # Default: '--no-rebase'
+        pull_strategy: '--no-rebase'
+
+        # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
+        # Default: true
+        push: true
+
+        # The arguments for the `git rm` command (see the paragraph below for more info)
+        # Default: ''
+        remove: ''
+
+        # Whether to use the --signoff option on `git commit` (only `true` and `false` are accepted)
+        # Default: false
+        signoff: false
+
+        # Arguments for the git tag command (the tag name always needs to be the first word not preceded by an hyphen)
+        # Default: ''
+        tag: ''
+      
