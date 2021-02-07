@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <script>
+	// Hack for scrolling window when linking to anchor tag with fixed nav header
+        var shiftWindow = function() { scrollBy(0, -75) };
+        window.addEventListener("hashchange", shiftWindow);
+        function load() { if (window.location.hash) shiftWindow(); }
+      </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>API Documentation - Cucoloris</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/http.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/base.js"></script> 
+    </head>
+
+    <body class="">
+
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<div class="container">
+	<a class="navbar-brand" href="..">Cucoloris</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse">
+          <!-- Main navigation -->
+          <nav class="nav">
+            <ul class="navbar-nav">
+              <li >
+                <a class="nav-link" href="..">Home</a>
+              </li>
+              <li class="active">
+                <a class="nav-link" href="./">API Documentation</a>
+              </li>
+            </ul>
+          </nav>
+
+          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+		<i class="fa fa-search"></i> Search
+              </a>
+            </li>
+          </ul>
+	</div>
+	</div>
+      </nav><div id="content" class="container">
+        
+      <div class="row">
+        <div class="col-md-9" role="main">
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    
+    <li class="breadcrumb-item active" aria-current="page">API Documentation</li>
+  </ol>
+</nav>
+
+
+<p><a name="cucoloris"></a></p>
+<h1 id="cucoloris">cucoloris</h1>
+<p><a name="cucoloris._settings"></a></p>
+<h1 id="cucoloris_settings">cucoloris._settings</h1>
+<p>Defines a class for settings.</p>
+<p>The settings class is used to select the correct settings, e.g. font,
+for the current system.</p>
+<p><a name="cucoloris._settings.Settings"></a></p>
+<h2 id="settings-objects">Settings Objects</h2>
+<pre><code class="language-python">class Settings()
+</code></pre>
+<p>Class for determining the correct settings.</p>
+<p>Settings like the font and corrective font offset (to move the font
+baseline up or down for correct vertical centering) are determined
+by this class. These depend on the platform and the font being used.
+For example, on Windows, Segoe UI is used as font. Unfortunately,
+that font has a weird baseline, making it appear off-center, even
+if centered vertically. Therefore, the text has to be moved
+slightly.</p>
+<p><a name="cucoloris._settings.Settings.get_font_name"></a></p>
+<h4 id="get_font_name">get_font_name</h4>
+<pre><code class="language-python"> | @staticmethod
+ | get_font_name() -&gt; str
+</code></pre>
+<p>Returns the font name to be used for the current platform.</p>
+<p><strong>Returns</strong>:</p>
+<p>Font name appropriate for the current platform.</p>
+<p><a name="cucoloris._settings.Settings.get_font_baseline_offset"></a></p>
+<h4 id="get_font_baseline_offset">get_font_baseline_offset</h4>
+<pre><code class="language-python"> | @staticmethod
+ | get_font_baseline_offset() -&gt; int
+</code></pre>
+<p>Returns a corrective offset in y-direction.</p>
+<p>On Windows, Segoe UI is used as font. Unfortunately, that font
+has a weird baseline, making it appear off-center, even if
+centered vertically. Therefore, the text has to be moved
+slightly. How much, it needs to move is determined by the
+returned value.</p>
+<p><strong>Returns</strong>:</p>
+<p>Vertical offset in pixels.</p>
+<p><a name="cucoloris._settings.Settings.get_scroll_threshold"></a></p>
+<h4 id="get_scroll_threshold">get_scroll_threshold</h4>
+<pre><code class="language-python"> | @staticmethod
+ | get_scroll_threshold() -&gt; int
+</code></pre>
+<p>Determines scroll_distance of a ScrollView widget.</p>
+<p>On a mobile device it makes sense to have a threshold before
+starting to scroll down. However, on a desktop computer, this
+behavior can quickly become annoying. Therefore, this threshold
+is chosen depending on the current platform.</p>
+<p><a name="cucoloris._settings.Settings.get_scroll_type"></a></p>
+<h4 id="get_scroll_type">get_scroll_type</h4>
+<pre><code class="language-python"> | @staticmethod
+ | get_scroll_type() -&gt; list
+</code></pre>
+<p>Determines scroll_type of a ScrollView widget.</p>
+<p>On a mobile device it makes sense to have scroll down content
+by touching the text. However, on a desktop computer, this#
+behavior can quickly become annoying. In addition, it makes
+selecting text more difficult on a desktop computer. Therefore,
+the behavior is chosen depending on the platform.</p>
+<p><a name="cucoloris.plaininput"></a></p>
+<h1 id="cucolorisplaininput">cucoloris.plaininput</h1>
+<p>Defines a text input that fixes some bugs in Kivy.</p>
+<p><a name="cucoloris.plaininput.PlainInput"></a></p>
+<h2 id="plaininput-objects">PlainInput Objects</h2>
+<pre><code class="language-python">class PlainInput(_TextInput)
+</code></pre>
+<p>Class that provides a plain text input area.</p>
+<p>Although there is already a text input provided in Kivy, there seems
+to be a bug in that widget's cursor position (at least in kivy 2.0).
+If one types in text and reaches the end of a non-multiline
+text input, the cursor may overflow the text input, i.e. the cursor 
+is outside the text input widget. This is even more present if a 
+long text is pasted into the widget. Then, the cursor will be way 
+outside the widget. To work around that issue, this class inherits
+from Kivy's text input and overwrites the necessary function. <br/>
+The cursor position is compared with the position of the right
+border of the text input. If the cursor is right of the text input,
+the cursor is moved to the left and to the right. This will put the
+cursor back into the confines of the text input. Since the movement
+is first left, then right, there will be no movement in sum.</p>
+<p><a name="cucoloris.plaininput.PlainInput.insert_text"></a></p>
+<h4 id="insert_text">insert_text</h4>
+<pre><code class="language-python"> | insert_text(substring: str, from_undo: bool = False)
+</code></pre>
+<p>Overwritten version of insert_text to fix the Kivy bug.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>substring</code> - The string to be added to the widget.</li>
+<li><code>from_undo</code> - Set to True, if the substring is a result of an
+  undo operation, False otherwise.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>The return value of the base classes version of the method.</p>
+<p><a name="cucoloris._scrollbar"></a></p>
+<h1 id="cucoloris_scrollbar">cucoloris._scrollbar</h1>
+<p>Defines a scroll bar that fits the rounded edges of other widgets.</p>
+<p>The standard scroll bar of a ScrollView widget has sharp corners.
+However, that does not fit the rounded Bootstrap shapes well.
+Therefore, this widget defines a new scroll bar with rounded corners
+and the ability to define separate border and fill colors of the
+scroll bar.</p>
+<p><a name="cucoloris._scrollbar.ScrollBar"></a></p>
+<h2 id="scrollbar-objects">ScrollBar Objects</h2>
+<pre><code class="language-python">class ScrollBar(_Box)
+</code></pre>
+<p>Widget for a scroll bar with rounded corners.</p>
+<p>The standard scroll bar of a ScrollView widget has sharp corners.
+However, that does not fit the rounded Bootstrap shapes well.
+Therefore, this widget defines a new scroll bar with rounded corners
+and the ability to define separate border and fill colors of the
+scroll bar.</p>
+<p><a name="cucoloris._scrollbar.ScrollBar.bar_orientation"></a></p>
+<h4 id="bar_orientation">bar_orientation</h4>
+<p>The orientation of the scroll bar.</p>
+<p>The orientation value may either be 'vertical' or 'horizontal'.</p>
+<p><a name="cucoloris._scrollbar.ScrollBar.bar_length"></a></p>
+<h4 id="bar_length">bar_length</h4>
+<p>The length of the scroll bar in pixels.</p>
+<p>Typically, the length of the scroll bar depends on the ratio of the
+scroll areas size and the size of the document being scrolled.</p>
+<p><a name="cucoloris._scrollbar.ScrollBar.STR_VERTICAL"></a></p>
+<h4 id="str_vertical">STR_VERTICAL</h4>
+<p>Constant defining the vertical scroll bar orientation value.</p>
+<p><a name="cucoloris._scrollbar.ScrollBar.STR_HORIZONTAL"></a></p>
+<h4 id="str_horizontal">STR_HORIZONTAL</h4>
+<p>Constant defining the horizontal scroll bar orientation value.</p>
+<p><a name="cucoloris._scrollbar.ScrollBar.bar_width"></a></p>
+<h4 id="bar_width">bar_width</h4>
+<p>The width of the scroll bar in pixels.</p>
+<p>The width of the scroll bar can be set to taste. It is given in
+pixels.</p>
+<p><a name="cucoloris._scrollbar.ScrollBar.on_bar_orientation"></a></p>
+<h4 id="on_bar_orientation">on_bar_orientation</h4>
+<pre><code class="language-python"> | on_bar_orientation(_, orientation: str)
+</code></pre>
+<p>Determines the validity of the selected orientation value.</p>
+<p>This is a callback method determines whether the selected
+orientation value is valid or not. If the value is valid, the
+scroll bar geometry gets updated. If the valid is invalid,
+an Exception is raised.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>orientation</code> - The desired orientation of the scroll bar.
+  Can be either 'vertical' or 'horizontal'.</li>
+</ul>
+<p><a name="cucoloris._scrollbar.ScrollBar.on_bar_length"></a></p>
+<h4 id="on_bar_length">on_bar_length</h4>
+<pre><code class="language-python"> | on_bar_length(_, length: int)
+</code></pre>
+<p>Callback for scroll bar length changes.</p>
+<p>This is a callback method that gets called whenever the length
+of the scroll bar is changed. It then triggers an update of the
+scroll bar's dimensions.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>length</code> - The desired length of the scroll bar in pixels.</li>
+</ul>
+<p><a name="cucoloris.background"></a></p>
+<h1 id="cucolorisbackground">cucoloris.background</h1>
+<p>Defines a background widget to create a single-color background.</p>
+<p><a name="cucoloris.background.Background"></a></p>
+<h2 id="background-objects">Background Objects</h2>
+<pre><code class="language-python">class Background(_Widget)
+</code></pre>
+<p>Simple single-color background.</p>
+<p>Kivy does not provide a background by default. This widget adds one
+that you can select the color of.</p>
+<p><a name="cucoloris.background.Background.color"></a></p>
+<h4 id="color">color</h4>
+<p>Color of the background.</p>
+<p>The color must be given as RGB values, each between 0 and 1.</p>
+<p><a name="cucoloris.background.Background.__init__"></a></p>
+<h4 id="__init__">__init__</h4>
+<pre><code class="language-python"> | __init__(color: _Optional[list] = None, **kwargs)
+</code></pre>
+<p>Initialization method of the widget.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>color</code> - The color of the background given as RGB values,
+  each between 0 and 1.</li>
+<li><code>**kwargs</code> - Keyed arguments passed on to the base class
+  of the widget.</li>
+</ul>
+<p><a name="cucoloris.markupinput"></a></p>
+<h1 id="cucolorismarkupinput">cucoloris.markupinput</h1>
+<p>Defines a text input widget with markup support.</p>
+<p><a name="cucoloris.markupinput.MarkupInput"></a></p>
+<h2 id="markupinput-objects">MarkupInput Objects</h2>
+<pre><code class="language-python">class MarkupInput(_Widget)
+</code></pre>
+<p>A text input widget with markup support.</p>
+<p>Kivy's standard text input field has some bugs at the time of this
+writing (version 2.0). For example, the caret may leave the text
+input area, if text is pasted inside the input. Therefore, Cucoloris
+offers improved replacements, one with the addition of markup
+support. If the text field has focus, the text can be edited in
+plain text mode. Markup as described in
+https://kivy.org/doc/stable/api-kivy.core.text.markup.html. Markup
+commands can be mixed with other text. Once focus is lost, the text
+field is displayed with all markup formatting applied. This is done
+by overlaying a TextField widget with a Label widget. Opacity of the
+two is toggled between zero and one depending on whether to display
+plain or formatted text.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.text"></a></p>
+<h4 id="text">text</h4>
+<p>The text in the widget.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.markup"></a></p>
+<h4 id="markup">markup</h4>
+<p>Switch to enable or disable markup support.</p>
+<p>Set to True if you want the widget to support markup commands.
+False, otherwise.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.foreground_color"></a></p>
+<h4 id="foreground_color">foreground_color</h4>
+<p>Color of the text.</p>
+<p>The color is given as a list of RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.cursor_color"></a></p>
+<h4 id="cursor_color">cursor_color</h4>
+<p>Color of the caret inside the text input.</p>
+<p>The color is given as a list of RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.selection_color"></a></p>
+<h4 id="selection_color">selection_color</h4>
+<p>Color of the text selection.</p>
+<p>Note that the text selection is drawn on top of the text. Therefore,
+the selection color should have an alpha value. The color is given
+as a list of RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.hint_text_color"></a></p>
+<h4 id="hint_text_color">hint_text_color</h4>
+<p>Color of the hint text.</p>
+<p>The hint text is shown to the user to indicate what to type into
+the text input. The color is given as a list of RGBA values between
+0 and 1.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.hint_text"></a></p>
+<h4 id="hint_text">hint_text</h4>
+<p>The hint text to be shown to the user.</p>
+<p>Hint texts are used to indicate what the user is supposed to type.
+It can be used as an alternative to other element labels.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.suggestion_text"></a></p>
+<h4 id="suggestion_text">suggestion_text</h4>
+<p>Suggestion text to display to the user.</p>
+<p>Suggestion texts can be used to increase typing speed by indicating
+what the user might want to type in advance. It can also act as a
+technique to remove dropdowns by displaying the closest values the
+FormControl widget is able to accept.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.background_color"></a></p>
+<h4 id="background_color">background_color</h4>
+<p>The background color of the text input.</p>
+<p>The color is given as a list of RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.multiline"></a></p>
+<h4 id="multiline">multiline</h4>
+<p>Switch to enable or disable multiline text.</p>
+<p>Set to True, if you want the widget to support multiple lines of
+text. Set to False, otherwise.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.write_tab"></a></p>
+<h4 id="write_tab">write_tab</h4>
+<p>Switch for either writing tabs or switching between widgets.</p>
+<p>You may select, whether a tab should lead to a loss of focus on the
+widget (True) or the tab is written as text into the text input
+(False).</p>
+<p><a name="cucoloris.markupinput.MarkupInput.line_spacing"></a></p>
+<h4 id="line_spacing">line_spacing</h4>
+<p>Space between two consecutive lines.</p>
+<p>More space increases clarity but also requires a larger widget to
+display the same number of lines.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.on__edit"></a></p>
+<h4 id="on__edit">on__edit</h4>
+<pre><code class="language-python"> | on__edit(_, __)
+</code></pre>
+<p>Toggle opacity on focus.</p>
+<p>Binds a callback method to a focus event of the TextField widget
+to toggle the opacity whenever the widget acquires or loses
+focus.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.on_focus"></a></p>
+<h4 id="on_focus">on_focus</h4>
+<pre><code class="language-python"> | on_focus(_, infocus)
+</code></pre>
+<p>Focus callback.</p>
+<p>The focus callback toggles the opacity between the PlainInput
+and the label widget.</p>
+<p><a name="cucoloris.markupinput.MarkupInput.on_markup"></a></p>
+<h4 id="on_markup">on_markup</h4>
+<pre><code class="language-python"> | on_markup(_, __)
+</code></pre>
+<p>Callback method for switching markup modes.</p>
+<p>Depending on whether to use markup or not, the opacity of the
+PlainInput and Label child widgets is toggled.</p>
+<p><a name="cucoloris.formcontrol"></a></p>
+<h1 id="cucolorisformcontrol">cucoloris.formcontrol</h1>
+<p>Defines a text input, equivalent to Boostrap's form-control class.</p>
+<p>In addition to standard text input functionality, the FormControl
+widget also supports markup text, i.e. the user can use BBCode markup
+commands like [b]my text[/b] to make it bold or [i]my text[/i] to make
+the text italic. Details about the markup commands are provided in
+Kivy's documentation:
+https://kivy.org/doc/stable/api-kivy.core.text.markup.html</p>
+<p><a name="cucoloris.formcontrol.FormControl"></a></p>
+<h2 id="formcontrol-objects">FormControl Objects</h2>
+<pre><code class="language-python">class FormControl(_Box)
+</code></pre>
+<p>Text input widget similar to Bootstrap's form-control class.</p>
+<p>In addition to standard text input functionality, the FormControl
+widget also supports markup text, i.e. the user can use BBCode
+markup commands like [b]my text[/b] to make it bold or
+[i]my text[/i] to make the text italic. Details about the markup
+commands are provided in Kivy's documentation:
+https://kivy.org/doc/stable/api-kivy.core.text.markup.html</p>
+<p><a name="cucoloris.formcontrol.FormControl.text_color"></a></p>
+<h4 id="text_color">text_color</h4>
+<p>The color of the text.</p>
+<p>The color has to be given as a list of RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.formcontrol.FormControl.border_color_focus"></a></p>
+<h4 id="border_color_focus">border_color_focus</h4>
+<p>The color of the border on focus.</p>
+<p>The color has to be given as a list of RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.formcontrol.FormControl.border_color_normal"></a></p>
+<h4 id="border_color_normal">border_color_normal</h4>
+<p>The color of the border without focus.</p>
+<p>The color has to be given as a list of RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.formcontrol.FormControl.text"></a></p>
+<h4 id="text_1">text</h4>
+<p>The text displayed in the widget.</p>
+<p>The text may contain markup commands as described in the Kivy
+documentation:
+https://kivy.org/doc/stable/api-kivy.core.text.markup.html</p>
+<p><a name="cucoloris.formcontrol.FormControl.padding"></a></p>
+<h4 id="padding">padding</h4>
+<p>The text padding in pixels.</p>
+<p>The text is padded to give it some space inside the box shape it
+resides in. The padding is given in pixels.</p>
+<p><a name="cucoloris.formcontrol.FormControl.scroll_bar_width"></a></p>
+<h4 id="scroll_bar_width">scroll_bar_width</h4>
+<p>The width of the scroll bar in pixels.</p>
+<p>The width of the scroll bar can be set to taste. It is given in
+pixels.</p>
+<p><a name="cucoloris.formcontrol.FormControl.num_lines"></a></p>
+<h4 id="num_lines">num_lines</h4>
+<p>The number of lines the FomControl widget shall display.</p>
+<p>This is the number of lines that are shown simultaneously without
+the need for scrolling. This attribute also determines the size of
+the widget, i.e. the widget's size attribute is set depending on
+the value of this attribute.</p>
+<p><a name="cucoloris.formcontrol.FormControl.line_spacing"></a></p>
+<h4 id="line_spacing_1">line_spacing</h4>
+<p>Space between two consecutive lines.</p>
+<p>More space increases clarity but also requires a larger widget to
+display the same number of lines.</p>
+<p><a name="cucoloris.formcontrol.FormControl.selection_color"></a></p>
+<h4 id="selection_color_1">selection_color</h4>
+<p>The color of text selection.</p>
+<p>The selection indication is drawn on top of the text. Therefore, the
+color should always have an alpha component. The color is given as
+RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.formcontrol.FormControl.hint_color"></a></p>
+<h4 id="hint_color">hint_color</h4>
+<p>Color of text hints.</p>
+<p>Text hints can be shown to indicate what the user should type. The
+color is given as a list of RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.formcontrol.FormControl.bar_fill_color"></a></p>
+<h4 id="bar_fill_color">bar_fill_color</h4>
+<p>Fill color of the scroll bar.</p>
+<p>The color is given as a list of RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.formcontrol.FormControl.bar_border_color"></a></p>
+<h4 id="bar_border_color">bar_border_color</h4>
+<p>Color of the scroll bar's border.</p>
+<p>The color is given as a list of RGBA values between 0 and 1.</p>
+<p><a name="cucoloris.formcontrol.FormControl.hint_text"></a></p>
+<h4 id="hint_text_1">hint_text</h4>
+<p>The hint text to be shown to the user.</p>
+<p>Hint texts are used to indicate what the user is supposed to type.
+It can be used as an alternative to other element labels.</p>
+<p><a name="cucoloris.formcontrol.FormControl.font_size"></a></p>
+<h4 id="font_size">font_size</h4>
+<p>The font size to use for the FormControl widget.</p>
+<p>The font size is given in pixels.</p>
+<p><a name="cucoloris.formcontrol.FormControl.suggestion_text"></a></p>
+<h4 id="suggestion_text_1">suggestion_text</h4>
+<p>Suggestion text to display to the user.</p>
+<p>Suggestion texts can be used to increase typing speed by indicating
+what the user might want to type in advance. It can also act as a
+technique to remove dropdowns by displaying the closest values the
+FormControl widget is able to accept.</p>
+<p><a name="cucoloris.formcontrol.FormControl.markup"></a></p>
+<h4 id="markup_1">markup</h4>
+<p>Determines, whether markup is recognized or not.</p>
+<p>If you want to allow for text formating using markup commands as
+described in the Kivy documentation
+(https://kivy.org/doc/stable/api-kivy.core.text.markup.html),
+you can set this attribute to True. If you want the FormControl
+widget to accept plain text only, set the value to False.</p>
+<p><a name="cucoloris.formcontrol.FormControl.__init__"></a></p>
+<h4 id="__init___1">__init__</h4>
+<pre><code class="language-python"> | __init__(text: _Optional[str] = None, hint_text: _Optional[str] = None, suggestion_text: _Optional[str] = None, markup: bool = True, font_size: _Optional[str] = None, num_lines: _Optional[int] = None, **kwargs)
+</code></pre>
+<p>Initialization method of the class.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>text</code> - The text to display in the widget.</li>
+<li><code>hint_text</code> - The hint text to indicate what the user is
+  supposed to type.</li>
+<li><code>suggestion_text</code> - Suggestive text to indicate what the user
+  might want to type next.</li>
+<li><code>markup</code> - Set to True, if you want to allow text formatting
+  using a BBCode like syntax described in
+  https://kivy.org/doc/stable/api-kivy.core.text.markup.html.
+  Set to False, if you want the FormControl widget to accept
+  plain text only.</li>
+<li><code>font_size</code> - The size of the font used in the widget given in
+  pixels, e.g. '16sp'.</li>
+<li><code>num_lines</code> - The number of lines to display without the need
+  for scrolling. This parameter also determines the size of
+  the FormControl widget.</li>
+<li><code>**kwargs</code> - Keyed parameters passed on to the base class.</li>
+</ul>
+<p><a name="cucoloris.formcontrol.FormControl.on_border_color_normal"></a></p>
+<h4 id="on_border_color_normal">on_border_color_normal</h4>
+<pre><code class="language-python"> | on_border_color_normal(_, color)
+</code></pre>
+<p>Sets the border color, if the nominal color is changed.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>color</code> - The new nominal color of the border.</li>
+</ul>
+<p><a name="cucoloris.formcontrol.FormControl.on__input"></a></p>
+<h4 id="on__input">on__input</h4>
+<pre><code class="language-python"> | on__input(_, __)
+</code></pre>
+<p>Set the font according to the current platform.</p>
+<p>There is a vertical offset for the Windows system font Segoe UI.
+Although the text input might be centered, the font still is
+not. For that reason, the padding option for Kivy's
+textinput widget was not used. Instead, the whole textinput
+is moved slightly up or down depending on the current platform.</p>
+<p><a name="cucoloris.formcontrol.FormControl.on__scroll"></a></p>
+<h4 id="on__scroll">on__scroll</h4>
+<pre><code class="language-python"> | on__scroll(_, __)
+</code></pre>
+<p>Callback for scroll events.</p>
+<p><a name="cucoloris.formcontrol.FormControl.on_edit_focus"></a></p>
+<h4 id="on_edit_focus">on_edit_focus</h4>
+<pre><code class="language-python"> | on_edit_focus(_, value)
+</code></pre>
+<p>Callback for touching the Focusable.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>widget</code> - The widget the method was called from.</li>
+<li><code>value</code> - Value 1, if the widget has focus, 0 otherwise.</li>
+</ul>
+<p><a name="cucoloris.formcontrol.FormControl.on_cursor_row"></a></p>
+<h4 id="on_cursor_row">on_cursor_row</h4>
+<pre><code class="language-python"> | on_cursor_row(_, __)
+</code></pre>
+<p>Callback for automatic scrolling.</p>
+<p>In a multi-line textinput, the ScrollView will not automatically
+scroll down if the user's text becomes too long. Using this
+callback, the textinput is automatically scrolled down or
+upwards, always keeping the cursor within the viewport.</p>
+<p><a name="cucoloris._colorarea"></a></p>
+<h1 id="cucoloris_colorarea">cucoloris._colorarea</h1>
+<p>Module for a color changing rectangle.</p>
+<p>This module defines the most basic shape that almost all other
+widgets are composed of. It is a rectangle with rounded corners that can
+smoothly transition to another color or resize itself. A widget that
+directly builds upon that functionality is RectangleElement. It is
+composed of two ColorArea classes to define a filled rectangle, i.e. one
+separate border and fill colors each of which inherit the smooth color
+transition functionality.</p>
+<p><a name="cucoloris._colorarea.ColorArea"></a></p>
+<h2 id="colorarea-objects">ColorArea Objects</h2>
+<pre><code class="language-python">class ColorArea(_Widget)
+</code></pre>
+<p>Rounded rectangle with animated color transitions.</p>
+<p>The ColorArea widget is a rectangle with rounded corners that can
+smoothly change color. The user of this class can do this using
+two methods:</p>
+<ul>
+<li>
+<p>modify: The nominal color of the widget is modified in HSV-space
+(hue, saturation and value) using a smooth color transition. The
+values given are not absolute ones but differences to the current
+nominal color. The modification can be easily undone by calling the
+function with zero values for all HSV-components.</p>
+</li>
+<li>
+<p>recolor: Changes the nominal color by smoothly transitioning to
+the given color in RGBA-space (red, green, blue, alpha).</p>
+</li>
+</ul>
+<p><a name="cucoloris._colorarea.ColorArea.color"></a></p>
+<h4 id="color_1">color</h4>
+<p>The nominal color of the widget in RGBA-space.</p>
+<p>The color is described as a list of float values between 0 and 1. It
+is interpreted in RGBA-space, i.e. [red, green, blue, alpha].</p>
+<p><a name="cucoloris._colorarea.ColorArea.radius"></a></p>
+<h4 id="radius">radius</h4>
+<p>The radius of each corner of the widget in pixels.</p>
+<p>The ColorArea widget is a rounded rectangle. Each of the four
+corners may have a different radius given in pixels, e.g.
+[2, 4, 3, 8].</p>
+<p><a name="cucoloris._colorarea.ColorArea.transition"></a></p>
+<h4 id="transition">transition</h4>
+<p>Transition time in seconds.</p>
+<p>The ColorArea widget transitions smoothly between colors. The time
+it shall take from one color state to another can be set using this
+attribute.</p>
+<p><a name="cucoloris._colorarea.ColorArea.__init__"></a></p>
+<h4 id="__init___2">__init__</h4>
+<pre><code class="language-python"> | __init__(size: _Optional[_List[int]] = None, radius: _Optional[_List[int]] = None, color: _Optional[_List[float]] = None, transition: _Optional[float] = None, **kwargs)
+</code></pre>
+<p>Initialization method of the class.</p>
+<p>The initialization method initializes the base class and creates
+a rounded rectangle on the widget's canvas. Other parameter
+that shall be passed on to the base class may be given using the
+<em>args and </em>*kwargs parameters.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>*args</code> - Any positional arguments that shall be passed on to
+  the base class (Widget).</li>
+<li><code>**kwargs</code> - Any keyed arguments that shall be passed on to the
+  base class (Widget).</li>
+</ul>
+<p><a name="cucoloris._colorarea.ColorArea.on_size"></a></p>
+<h4 id="on_size">on_size</h4>
+<pre><code class="language-python"> | on_size(_, size: int)
+</code></pre>
+<p>Callback for size change events.</p>
+<p>Whenever the size of the widget is changed, the canvas needs to
+be updated. This is done in this method. Note that this method
+is not meant to be called by the user.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>widget</code> - The widget the method was called from.</li>
+<li><code>size</code> - The new size value.</li>
+</ul>
+<p><a name="cucoloris._colorarea.ColorArea.on_radius"></a></p>
+<h4 id="on_radius">on_radius</h4>
+<pre><code class="language-python"> | on_radius(_, radius: _List[int])
+</code></pre>
+<p>Callback for radius change events.</p>
+<p>Whenever the radius of at least one of the widget's corners is
+changed, the canvas needs to be updated. This is done in this
+method. Note that this method is not meant to be called by the
+user.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>widget</code> - The widget the method was called from.</li>
+<li><code>radius</code> - The new radius value.</li>
+</ul>
+<p><a name="cucoloris._colorarea.ColorArea.on_pos"></a></p>
+<h4 id="on_pos">on_pos</h4>
+<pre><code class="language-python"> | on_pos(_, pos: _List[int])
+</code></pre>
+<p>Callback for position change events.</p>
+<p>Whenever the position of the widget is changed, the canvas
+needs to be updated. This is done in this method. Note that
+this method is not meant to be called by the user.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>widget</code> - The widget the method was called from.</li>
+<li><code>pos</code> - The new position value.</li>
+</ul>
+<p><a name="cucoloris._colorarea.ColorArea.on_color"></a></p>
+<h4 id="on_color">on_color</h4>
+<pre><code class="language-python"> | on_color(_, color: _List[float])
+</code></pre>
+<p>Callback for changing the nominal (unmodified) color.</p>
+<p>Whenever a color transition is performed using the recolor()
+method, this callback-method is called by Kivy's Animation class
+whenever there is a change in color. Note that this method is
+not meant to be called by the user.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>widget</code> - The widget the method was called from.</li>
+<li><code>color</code> - The new color value.</li>
+</ul>
+<p><a name="cucoloris._colorarea.ColorArea.on__hsv"></a></p>
+<h4 id="on__hsv">on__hsv</h4>
+<pre><code class="language-python"> | on__hsv(_, hsv: _List[float])
+</code></pre>
+<p>Callback for animating the color modification in hsv space.</p>
+<p>In order to avoid weired looking color transitions, a
+modification of the widget's color is done in HSV-space.
+Therefore, this method is called whenever Kivy's Animation
+class calls it. Note that this method is not meant to be called
+by the user.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>widget</code> - The widget the method was called from.</li>
+<li><code>hsv</code> - The new hsv value.</li>
+</ul>
+<p><a name="cucoloris._colorarea.ColorArea.modify"></a></p>
+<h4 id="modify">modify</h4>
+<pre><code class="language-python"> | modify(hsv: _List[float])
+</code></pre>
+<p>Shifts the widget's color in HSV-space.</p>
+<p>Modifies the nominal color of the widget in HSV-space (hue,
+saturation and value) using a smooth color transition. The
+given values are not absolute ones but differences to the
+current nominal color. For example, to make a widget with name
+myWidget slightly darker, one may call
+to reduce the widget's value (meaning brightness) by 0.2.
+The modification can be easily undone by calling the function
+with zero values for all HSV-components, e.g.:</p>
+<pre><code class="language-py">myWidget.modify([0, 0, -0.2])
+</code></pre>
+<pre><code class="language-py">myWidget.modify([0, 0, 0])
+</code></pre>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>hsv</code> - List of hue, saturation, and value (brightness) values
+  to shift the color of the widget.</li>
+</ul>
+<p><a name="cucoloris._colorarea.ColorArea.recolor"></a></p>
+<h4 id="recolor">recolor</h4>
+<pre><code class="language-python"> | recolor(rgba: _List[float])
+</code></pre>
+<p>Changes the nominal color of the widget.</p>
+<p>Changes the nominal color by smoothly transitioning to the given
+color. The color to transition to is given as a list of float
+values between 0 and 1 in RGBA-space, i.e. [red, green, blue,
+alpha]. Unlike the modify-method, the change cannot be undone
+just as easily. For that, the user needs to store the old color
+in another variable and call recolor with that variable again.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>rgba</code> - The new color as a list in RGBA-space to transition
+  to. Each list component is a float value between 0 and 1.</li>
+</ul>
+<p><a name="cucoloris._colorarea.ColorArea.resize"></a></p>
+<h4 id="resize">resize</h4>
+<pre><code class="language-python"> | resize(targetsize: _List[int], targetradius: _Optional[_List[int]] = None)
+</code></pre>
+<p>Starts an animated change of the widget's size and radius.</p>
+<p>The method smoothly resizes the widget relative to its center.
+Both, the widget size and its radius are transformed.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>targetsize</code> - List of the size in pixels in x- and y-direction
+  to grow or shrink the widget to.</li>
+<li><code>targetradius</code> - List of radii in pixels for each of the four
+  corners to grow or shrink to. The parameter is optional. If
+  not given, the radius of each corner will be automatically
+  scaled according to the given targetsize. However, it is
+  recommended to explicitly provide a radius every once in
+  a while (if the method is used multiple times) to avoid
+  a summation of rounding errors.</li>
+</ul>
+<p><a name="cucoloris._colorlabel"></a></p>
+<h1 id="cucoloris_colorlabel">cucoloris._colorlabel</h1>
+<p>Defines a label that can change color.</p>
+<p>The color shift is animated. This can be used for link-style text.</p>
+<p><a name="cucoloris._colorlabel.ColorLabel"></a></p>
+<h2 id="colorlabel-objects">ColorLabel Objects</h2>
+<pre><code class="language-python">class ColorLabel(_Label)
+</code></pre>
+<p>Label widget that can shift its color.</p>
+<p>The color shift is animated. This can be used for link-style text.</p>
+<p><a name="cucoloris._colorlabel.ColorLabel.nominal_color"></a></p>
+<h4 id="nominal_color">nominal_color</h4>
+<p>Nominal, i.e. unmodied color of the label.</p>
+<p>The color must be given as RGBA values, each between 0 and 1.</p>
+<p><a name="cucoloris._colorlabel.ColorLabel.transition"></a></p>
+<h4 id="transition_1">transition</h4>
+<p>Transition time in seconds.</p>
+<p>The ColorLabel widget transitions smoothly between colors. The time
+it shall take from one color state to another can be set using this
+attribute.</p>
+<p><a name="cucoloris._colorlabel.ColorLabel.text"></a></p>
+<h4 id="text_2">text</h4>
+<p>The text of the label.</p>
+<p><a name="cucoloris._colorlabel.ColorLabel.__init__"></a></p>
+<h4 id="__init___3">__init__</h4>
+<pre><code class="language-python"> | __init__(text: _Optional[str] = None, nominal_color: _Optional[list] = None, transition: _Optional[int] = None, **kwargs)
+</code></pre>
+<p>Initialization method of the class.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>text</code> - The text of the label.</li>
+<li><code>nominal_color</code> - The nominal, i.e. unmodified color of the</li>
+<li><code>transition</code> - The time it takes to transition from one color
+  to another.</li>
+</ul>
+<p><a name="cucoloris._colorlabel.ColorLabel.on_nominal_color"></a></p>
+<h4 id="on_nominal_color">on_nominal_color</h4>
+<pre><code class="language-python"> | on_nominal_color(_, color)
+</code></pre>
+<p>Callback for changing the color.</p>
+<p>This callback method changes the nominal, i.e. unmodified
+color of the widget.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>color</code> - The new color value.</li>
+</ul>
+<p><a name="cucoloris._colorlabel.ColorLabel.on__hsv"></a></p>
+<h4 id="on__hsv_1">on__hsv</h4>
+<pre><code class="language-python"> | on__hsv(_, hsv)
+</code></pre>
+<p>Callback for animating the color modification in hsv space.</p>
+<p>The color modification takes place in hue, saturation, value
+space in order to avoid weird red color shifts moving through
+several different hues instead of just the brightness (value)
+component of the color.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>widget</code> - The widget the method was called from.</li>
+<li><code>hsv</code> - The new hsv value.</li>
+</ul>
+<p><a name="cucoloris._colorlabel.ColorLabel.modify"></a></p>
+<h4 id="modify_1">modify</h4>
+<pre><code class="language-python"> | modify(hsv)
+</code></pre>
+<p>Shifts the widget's color in HSV-space.</p>
+<p>Modifies the nominal color of the widget in HSV-space (hue,
+saturation and value) using a smooth color transition. The
+given values are not absolute ones but differences to the
+current nominal color. For example, to make a widget with name
+myWidget slightly darker, one may call
+to reduce the widget's value (meaning brightness) by 0.2.
+The modification can be easily undone by calling the function
+with zero values for all HSV-components, e.g.:</p>
+<pre><code class="language-py">myWidget.modify([0, 0, -0.2])
+</code></pre>
+<pre><code class="language-py">myWidget.modify([0, 0, 0])
+</code></pre>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>hsv</code> - List of hue, saturation, and value (brightness) values
+  to shift the color of the widget.</li>
+</ul>
+<p><a name="cucoloris._colorlabel.ColorLabel.recolor"></a></p>
+<h4 id="recolor_1">recolor</h4>
+<pre><code class="language-python"> | recolor(color)
+</code></pre>
+<p>Changes the nominal color of the widget.</p>
+<p>Changes the nominal color by smoothly transitioning to the given
+color. The color to transition to is given as a list of float
+values between 0 and 1 in RGBA-space, i.e. [red, green, blue,
+alpha]. Unlike the modify-method, the change cannot be undone
+just as easily. For that, the user needs to store the old color
+in another variable and call recolor with that variable again.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>rgba</code> - The new color as a list in RGBA-space to transition
+  to. Each list component is a float value between 0 and 1.</li>
+</ul>
+<p><a name="cucoloris._box"></a></p>
+<h1 id="cucoloris_box">cucoloris._box</h1>
+<p>Module for a basic box shape.</p>
+<p>This module defines a basic box with optional shadow. It has separate
+shadow, border and fill colors as well as rounded corners.
+The box is composed of three ColorArea widgets which are set up as
+public attributes so that they can be accessed and modified
+individually.</p>
+<p><a name="cucoloris._box.Box"></a></p>
+<h2 id="box-objects">Box Objects</h2>
+<pre><code class="language-python">class Box(_Widget)
+</code></pre>
+<p>Widget for a basic box shape.</p>
+<p>The widget represents a basic box with optional shadow. It has
+separate shadow, border and fill colors as well as rounded corners.
+The box is composed of three ColorArea widgets which are set up as
+public attributes so that they can be accessed and modified
+individually. Since each child is a ColorArea widget, the box
+supports smooth color transitions and size changes for each
+child widget.</p>
+<p>The box can detect touch and hover events that can be used to
+trigger custom color transitions and size changes from any derived
+class.</p>
+<p><a name="cucoloris._box.Box.radius"></a></p>
+<h4 id="radius_1">radius</h4>
+<p>The radius of each corner of the widget in pixels.</p>
+<p>The Box widget is a rounded rectangle. Each of the four
+corners may have a different radius given in pixels, e.g.
+[2, 4, 3, 8].</p>
+<p><a name="cucoloris._box.Box.border_width"></a></p>
+<h4 id="border_width">border_width</h4>
+<p>The width of the widget's border.</p>
+<p>There is a solid border drawn around the widget. The width of that
+border can be set using this attribute.</p>
+<p><a name="cucoloris._box.Box.shadow_width"></a></p>
+<h4 id="shadow_width">shadow_width</h4>
+<p>The width of the widget's shadow.</p>
+<p>The widget can be highlighted by a shadow in order to indicate
+focus or to give the widget a three-dimensional look. The width of
+that shadow can be adjusted by this attribute.</p>
+<p><a name="cucoloris._box.Box.fill_color"></a></p>
+<h4 id="fill_color">fill_color</h4>
+<p>The fill color of the widget.</p>
+<p>The widget is composed of three ColorArea widgets. The color of the
+innermost ColorArea can be set by this attribute. It represents the
+fill color of the Box widget.</p>
+<p><a name="cucoloris._box.Box.border_color"></a></p>
+<h4 id="border_color">border_color</h4>
+<p>The color of the widget's border.</p>
+<p>There is a solid border drawn around the widget. The color of that
+border can be set using this attribute.</p>
+<p><a name="cucoloris._box.Box.shadow_color"></a></p>
+<h4 id="shadow_color">shadow_color</h4>
+<p>The color of the widget's shadow.</p>
+<p>The widget can be highlighted by a shadow in order to indicate
+focus or to give the widget a three-dimensional look. The color of
+that shadow can be adjusted by this attribute.</p>
+<p><a name="cucoloris._box.Box.transition"></a></p>
+<h4 id="transition_2">transition</h4>
+<p>Transition time in seconds.</p>
+<p>The box widget can be highlighted by a shadow in order to indicate
+focus. The shadow smoothly appears from behind the widget. The time
+it takes for the shadow to reach its final size is determined by
+this attribute. The attribute is also the speed with which each
+component can transition to another color, if needed.</p>
+<p><a name="cucoloris._box.Box.fill"></a></p>
+<h4 id="fill">fill</h4>
+<p>The ColorArea widget representing the fill color.</p>
+<p>The widget is composed of three ColorArea widgets. The innermost
+one represents the fill color. It can be accessed directly through
+this attribute for more control.</p>
+<p><a name="cucoloris._box.Box.border"></a></p>
+<h4 id="border">border</h4>
+<p>The ColorArea widget representing the border.</p>
+<p>The widget is composed of three ColorArea widgets. The one on the
+middle layer represents the border color. It can be accessed
+directly through this attribute for more control.</p>
+<p><a name="cucoloris._box.Box.shadow"></a></p>
+<h4 id="shadow">shadow</h4>
+<p>The ColorArea widget representing the shadow.</p>
+<p>The widget is composed of three ColorArea widgets. The outermost
+widget represents the shadow. It can be accessed directly through
+this attribute for more control.</p>
+<p><a name="cucoloris._box.Box.__init__"></a></p>
+<h4 id="__init___4">__init__</h4>
+<pre><code class="language-python"> | __init__(*args, **kwargs)
+</code></pre>
+<p>Initialization function of the widget.</p>
+<p>The <strong>init</strong> method is typically called without arguments. Any
+arguments given are passed on the the base class Widget.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>*args</code> - Positional arguments passed on to the base class.</li>
+<li><code>**kwargs</code> - Keyed arguments passed on to the base class.</li>
+</ul>
+<p><a name="cucoloris._box.Box.bind"></a></p>
+<h4 id="bind">bind</h4>
+<pre><code class="language-python"> | bind(**kwargs)
+</code></pre>
+<p>Bind a callback function to one an event.</p>
+<p>The Box widget can react to multiple events and call a specified
+callback function whenever such an event occurs. The following
+events are available:
+* on_enter: The mouse enters the widget space.
+* on_leave: The mouse leaves the widget space.
+* on_down: There is a touch or click on the widget.
+* on_release: The touch or click is released.
+* on_drag: There was a touch or click on the widget and the
+input device is now moved without releasing the touch or click.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>**kwargs</code> - Keyed argument list to be passed on to the bound
+  callback function.</li>
+</ul>
+<p><a name="cucoloris._box.Box.show_shadow"></a></p>
+<h4 id="show_shadow">show_shadow</h4>
+<pre><code class="language-python"> | show_shadow()
+</code></pre>
+<p>Highlights the widget by a shadow.</p>
+<p>The box widget can be highlighted by a shadow in order to
+indicate focus. The shadow smoothly appears from behind the
+widget. If focus is lost, the shadow can disappear.
+This method highlights the widget by a shadow.</p>
+<p><a name="cucoloris._box.Box.hide_shadow"></a></p>
+<h4 id="hide_shadow">hide_shadow</h4>
+<pre><code class="language-python"> | hide_shadow()
+</code></pre>
+<p>Hides the shadow of the widget.</p>
+<p>The box widget can be highlighted by a shadow in order to
+indicate focus. The shadow smoothly appears from behind the
+widget. If focus is lost, the shadow can be hidden by using
+this method.</p>
+<p><a name="cucoloris._box.Box.ispressed"></a></p>
+<h4 id="ispressed">ispressed</h4>
+<pre><code class="language-python"> | ispressed()
+</code></pre>
+<p>Returns, whether the Box is currently touched.</p>
+<p>The method will return true, if the Box widget is currently
+touched, i.e. the touch occured within or on the widget's border
+(the shadow is ignored) and has not yet been released. The
+method will also return true, if the touch device leaves the
+widget without releasing the touch (dragging).</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>bool</code> - True, if the widget is currently touched. False,
+  otherwise.</li>
+</ul>
+<p><a name="cucoloris._box.Box.ishover"></a></p>
+<h4 id="ishover">ishover</h4>
+<pre><code class="language-python"> | ishover()
+</code></pre>
+<p>Returns, whether the cursor is hovering over the widget.</p>
+<p>The method will return true, if the cursor is currently hovering
+on or within the widget's border (the shadow is ignored).</p>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>bool</code> - True, if the cursor is currently hovering over the
+  widget. False, otherwise.</li>
+</ul>
+<p><a name="cucoloris._box.Box.on_mouse_pos"></a></p>
+<h4 id="on_mouse_pos">on_mouse_pos</h4>
+<pre><code class="language-python"> | on_mouse_pos(_, pos: _List[int])
+</code></pre>
+<p>Callback function for detecting mouse movements.</p>
+<p>The method is called for each cursor movement. It is used to
+detect, whether the cursor hovers over the box. If the cursor
+starts to hover over or leaves the Box, then the callback
+functions for 'on_enter' or 'on_leave' are called, respectively.
+Note that the user must have bound a callback functions to those
+events prior to the event's occurrence. Otherwise, nothing
+happens.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>pos</code> - The new position value.</li>
+</ul>
+<p><a name="cucoloris._box.Box.on_touch_down"></a></p>
+<h4 id="on_touch_down">on_touch_down</h4>
+<pre><code class="language-python"> | on_touch_down(touch: _MotionEvent)
+</code></pre>
+<p>Callback function for detecting touches.</p>
+<p>The method is called for each touch / click from the user. The
+method checks whether the touch was performed on or within
+the border of the Box (the shadow is ignored). If so, it calls a
+callback function that was bound to the event 'on_press' using
+the bind() method of this class.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>touch</code> - Information about the touch.</li>
+</ul>
+<p><a name="cucoloris._box.Box.on_touch_up"></a></p>
+<h4 id="on_touch_up">on_touch_up</h4>
+<pre><code class="language-python"> | on_touch_up(touch: _MotionEvent)
+</code></pre>
+<p>Callback function for detecting touch or click releases.</p>
+<p>The method is called whenever a prior touch / click is released.
+If so, it calls the callback function that was bound to the
+event 'on_press' using the bind() method of this class.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>touch</code> - Information about the touch.</li>
+</ul>
+<p><a name="cucoloris._box.Box.on_touch_move"></a></p>
+<h4 id="on_touch_move">on_touch_move</h4>
+<pre><code class="language-python"> | on_touch_move(touch: _MotionEvent)
+</code></pre>
+<p>Callback function for detecting a dragging movement.</p>
+<p>The method is called whenever the input devices moves. It
+checks whether there was a touch or click on the Box before
+which corresponds to dragging the Box. If so, the methods calls
+the callback function that was bound to the event 'on_drag'
+using the bind() method of this class.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>touch</code> - Information about the touch.</li>
+</ul>
+<p><a name="cucoloris.button"></a></p>
+<h1 id="cucolorisbutton">cucoloris.button</h1>
+<p>Defines solid and outline button widgets.</p>
+<p>This file defines button widgets for solid and outline buttons similar
+to the Bootstrap classes btn-primary, btn-secondary,
+btn-outline-primary, btn-outline-secondary, etc.</p>
+<p><a name="cucoloris.button.Btn"></a></p>
+<h2 id="btn-objects">Btn Objects</h2>
+<pre><code class="language-python">class Btn(_FocusBehaviour,  _Box)
+</code></pre>
+<p>Widget for drawing a touchable / clickable button.</p>
+<p>This widget is the base class of a button that has similar behavior
+to the btn class of Bootstrap. From this base class the classes
+SolidButton and OutlineButton are derived modelling buttons similar
+to the btn and btn-outline classes of Bootstrap.</p>
+<p><a name="cucoloris.button.Btn.padding"></a></p>
+<h4 id="padding_1">padding</h4>
+<p>Padding of the button's label in pixels.</p>
+<p>Buttons use the system fonts available on the device. Some fonts may
+have slightly weird baselines, e.g. Segoe Ui on Windows. Therefore,
+the padding is adjusted based on the font used.</p>
+<p><a name="cucoloris.button.Btn.font_size"></a></p>
+<h4 id="font_size_1">font_size</h4>
+<p>The font size used for the button's label in pixels.</p>
+<p><a name="cucoloris.button.Btn.underline"></a></p>
+<h4 id="underline">underline</h4>
+<p>Determines, whether the button's label text is underlined.</p>
+<p>An underline is typically used for hyperlinks. The value can be
+either True (text will be underlined) or False (text will not be
+underlined).</p>
+<p><a name="cucoloris.button.Btn.hover_fill"></a></p>
+<h4 id="hover_fill">hover_fill</h4>
+<p>HSV-color fill offsets used for hovering.</p>
+<p>If the cursor hovers over the button, its fill color is slightly
+modified. More precisely, its hue, saturation and brightness values
+are shifted by the amount specified with this attribute. Note that
+the values range from 0 to 1.</p>
+<p><a name="cucoloris.button.Btn.press_fill"></a></p>
+<h4 id="press_fill">press_fill</h4>
+<p>HSV-color fill offsets used, if the button is pressed.</p>
+<p>If the button is pressed, its fill color is slightly
+modified. More precisely, its hue, saturation and brightness values
+are shifted by the amount specified with this attribute. Note that
+the values range from 0 to 1.</p>
+<p><a name="cucoloris.button.Btn.hover_text"></a></p>
+<h4 id="hover_text">hover_text</h4>
+<p>HSV-color text offsets used for hovering.</p>
+<p>If the cursor hovers over the button, its text color is slightly
+modified. More precisely, its hue, saturation and brightness values
+are shifted by the amount specified with this attribute. Note that
+the values range from 0 to 1.</p>
+<p><a name="cucoloris.button.Btn.press_text"></a></p>
+<h4 id="press_text">press_text</h4>
+<p>HSV-color text offsets used, if the button is pressed.</p>
+<p>If the button is pressed, its text color is slightly
+modified. More precisely, its hue, saturation and brightness values
+are shifted by the amount specified with this attribute. Note that
+the values range from 0 to 1.</p>
+<p><a name="cucoloris.button.Btn.text_color"></a></p>
+<h4 id="text_color_1">text_color</h4>
+<p>The default color of the button text.</p>
+<p>The color of the button text needs to be specified as RGBA values
+between 0 and 1.</p>
+<p><a name="cucoloris.button.Btn.text"></a></p>
+<h4 id="text_3">text</h4>
+<p>The text with which the button is labeled.</p>
+<p>The button text also determines the button's overall size.</p>
+<p><a name="cucoloris.button.Btn.__init__"></a></p>
+<h4 id="__init___5">__init__</h4>
+<pre><code class="language-python"> | __init__(text: str = None, font_size: str = None, text_color: _List = None, underline: bool = False, **kwargs)
+</code></pre>
+<p>Initialization method of the class.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>text</code> - The text of the button.</li>
+<li><code>font_size</code> - The font size of the button text in pixels.</li>
+<li><code>text_color</code> - The color of the button text as RGBA values
+  between 0 and 1.</li>
+<li><code>underline</code> - Set to True to underline the button text. False,
+  otherwise.</li>
+<li><code>**kwargs</code> - Keyed arguments passed on to the base classes.</li>
+</ul>
+<p><a name="cucoloris.button.Btn.on_enter"></a></p>
+<h4 id="on_enter">on_enter</h4>
+<pre><code class="language-python"> | on_enter(_)
+</code></pre>
+<p>Callback for cursor hover events.</p>
+<p>If the cursor enters the button area and hovers over it, this
+callback method is called. It can be used to modify the
+button's colors.</p>
+<p><a name="cucoloris.button.Btn.on_leave"></a></p>
+<h4 id="on_leave">on_leave</h4>
+<pre><code class="language-python"> | on_leave(_)
+</code></pre>
+<p>Callback for end of hover events.</p>
+<p>If the cursor leaves the button area and stops to hovers over
+it, this callback method is called. It can be used to modify
+the button's colors.</p>
+<p><a name="cucoloris.button.Btn.on_release"></a></p>
+<h4 id="on_release">on_release</h4>
+<pre><code class="language-python"> | on_release(_)
+</code></pre>
+<p>Callback for button release events.</p>
+<p>If the button is released, this callback method is called.</p>
+<p><a name="cucoloris.button.Btn.on_press"></a></p>
+<h4 id="on_press">on_press</h4>
+<pre><code class="language-python"> | on_press(_)
+</code></pre>
+<p>Callback for button press events.</p>
+<p>If the button is pressed, this callback method is called.</p>
+<p><a name="cucoloris.button.Btn.on_focus"></a></p>
+<h4 id="on_focus_1">on_focus</h4>
+<pre><code class="language-python"> | on_focus(_, value: bool)
+</code></pre>
+<p>Callback for button focus events.</p>
+<p>If the button gets focus, this callback method is called. One
+can focus on the button by either pressing it or pressing tab
+until the button is focused on.</p>
+<p><a name="cucoloris.button.Btn.on__label"></a></p>
+<h4 id="on__label">on__label</h4>
+<pre><code class="language-python"> | on__label(_, __)
+</code></pre>
+<p>Callback method for initializing the label.</p>
+<p>If the button label is initialized, this method is called. It
+is used to set the default font, font_size and padding depending
+on the host device and selected color scheme.</p>
+<p><a name="cucoloris.button.SolidBtn"></a></p>
+<h2 id="solidbtn-objects">SolidBtn Objects</h2>
+<pre><code class="language-python">class SolidBtn(Btn)
+</code></pre>
+<p>This widget represents a button with solid fill color.</p>
+<p>The widget represents a button similar to the typical Bootstrap
+buttons btn-primary, btn-secondary, etc. It can shift its color
+while the cursor is hovering over it or the button is pressed.
+There is also a shadow surrounding the button to indicate focus.</p>
+<p><a name="cucoloris.button.SolidBtn.on_enter"></a></p>
+<h4 id="on_enter_1">on_enter</h4>
+<pre><code class="language-python"> | on_enter(hover: bool)
+</code></pre>
+<p>Callback for cursor hover events.</p>
+<p>If the cursor enters the button area and hovers over it, this
+callback method is called. It can be used to modify the
+button's colors.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>hover</code> - True, if the cursor hovers over the button. False,
+  otherwise.</li>
+</ul>
+<p><a name="cucoloris.button.SolidBtn.on_leave"></a></p>
+<h4 id="on_leave_1">on_leave</h4>
+<pre><code class="language-python"> | on_leave(hover: bool)
+</code></pre>
+<p>Callback for end of hover events.</p>
+<p>If the cursor leaves the button area and stops to hovers over
+it, this callback method is called. It can be used to modify
+the button's colors.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>hover</code> - True, if the cursor hovers over the button. False,
+  otherwise.</li>
+</ul>
+<p><a name="cucoloris.button.SolidBtn.on_release"></a></p>
+<h4 id="on_release_1">on_release</h4>
+<pre><code class="language-python"> | on_release(touch: _MotionEvent)
+</code></pre>
+<p>Callback for button release events.</p>
+<p>If the button is released, this callback method is called.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>touch</code> - Motion event with more information about the release.</li>
+</ul>
+<p><a name="cucoloris.button.SolidBtn.on_focus"></a></p>
+<h4 id="on_focus_2">on_focus</h4>
+<pre><code class="language-python"> | on_focus(_, value: bool)
+</code></pre>
+<p>Callback for button focus events.</p>
+<p>If the button gets focus, this callback method is called. One
+can focus on the button by either pressing it or pressing tab
+until the button is focused on.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - True, if the button has focus. False, otherwise.</li>
+</ul>
+<p><a name="cucoloris.button.SolidBtn.on_press"></a></p>
+<h4 id="on_press_1">on_press</h4>
+<pre><code class="language-python"> | on_press(touch: _MotionEvent)
+</code></pre>
+<p>Callback for button press events.</p>
+<p>If the button is pressed, this callback method is called.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>touch</code> - Motion event with more information about the release.</li>
+</ul>
+<p><a name="cucoloris.button.SolidLinkBtn"></a></p>
+<h2 id="solidlinkbtn-objects">SolidLinkBtn Objects</h2>
+<pre><code class="language-python">class SolidLinkBtn(SolidBtn)
+</code></pre>
+<p>A button with a solid fill color for links.</p>
+<p>The solid link button has a similar hover animation to SolidBtn.
+However, the color transition is applied to the link text only.</p>
+<p><a name="cucoloris.button.SolidLinkBtn.on_leave"></a></p>
+<h4 id="on_leave_2">on_leave</h4>
+<pre><code class="language-python"> | on_leave(hover: bool)
+</code></pre>
+<p>Callback for end of hover events.</p>
+<p>If the cursor leaves the button area and stops to hovers over
+it, this callback method is called. It can be used to modify
+the button's colors.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>hover</code> - True, if the cursor hovers over the button. False,
+  otherwise.</li>
+</ul>
+<p><a name="cucoloris.button.OutlineBtn"></a></p>
+<h2 id="outlinebtn-objects">OutlineBtn Objects</h2>
+<pre><code class="language-python">class OutlineBtn(Btn)
+</code></pre>
+<p>Button widget with no fill color.</p>
+<p>The outline button has a hover animation that transitions its fill
+color from background color to the border color while often
+switching the text color from border color to white. It is similar
+to the Bootstrap button classes btn-outline-primary,
+btn-outline-secondary, etc.</p>
+<p><a name="cucoloris.button.OutlineBtn.on_enter"></a></p>
+<h4 id="on_enter_2">on_enter</h4>
+<pre><code class="language-python"> | on_enter(_)
+</code></pre>
+<p>Callback for cursor hover events.</p>
+<p>If the cursor enters the button area and hovers over it, this
+callback method is called. It can be used to modify the
+button's colors.</p>
+<p><a name="cucoloris.button.OutlineBtn.on_leave"></a></p>
+<h4 id="on_leave_3">on_leave</h4>
+<pre><code class="language-python"> | on_leave(_)
+</code></pre>
+<p>Callback for end of hover events.</p>
+<p>If the cursor leaves the button area and stops to hovers over
+it, this callback method is called. It can be used to modify
+the button's colors.</p>
+<p><a name="cucoloris.button.OutlineBtn.on_release"></a></p>
+<h4 id="on_release_2">on_release</h4>
+<pre><code class="language-python"> | on_release(_)
+</code></pre>
+<p>Callback for button release events.</p>
+<p>If the button is released, this callback method is called.</p>
+<p><a name="cucoloris.button.OutlineBtn.on_focus"></a></p>
+<h4 id="on_focus_3">on_focus</h4>
+<pre><code class="language-python"> | on_focus(_, value: bool)
+</code></pre>
+<p>Callback for button focus events.</p>
+<p>If the button gets focus, this callback method is called. One
+can focus on the button by either pressing it or pressing tab
+until the button is focused on.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - True, if the button has focus. False, otherwise.</li>
+</ul>
+<p><a name="cucoloris.button.OutlineBtn.on_press"></a></p>
+<h4 id="on_press_2">on_press</h4>
+<pre><code class="language-python"> | on_press(touch: _MotionEvent)
+</code></pre>
+<p>Callback for button press events.</p>
+<p>If the button is pressed, this callback method is called.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>touch</code> - Motion event with more information about the release.</li>
+</ul>
+<p><a name="cucoloris._scrollarea"></a></p>
+<h1 id="cucoloris_scrollarea">cucoloris._scrollarea</h1>
+<p>Defines a ScrollArea widget.</p>
+<p>Kivy's ScrollView widget has a scroll bar with sharp corners.
+However, that does not fit the rounded Bootstrap shapes well.
+Therefore, this widget has the same functionality as the original
+ScrollView but uses the ScrollBar widget, a scroll bar with rounded
+edges.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea"></a></p>
+<h2 id="scrollarea-objects">ScrollArea Objects</h2>
+<pre><code class="language-python">class ScrollArea(_Widget)
+</code></pre>
+<p>Replacement for Kivy's ScrollView widget.</p>
+<p>Kivy's ScrollView widget has a scroll bar with sharp corners.
+However, that does not fit the rounded Bootstrap shapes well.
+Therefore, this widget has the same functionality as the original
+ScrollView but uses the ScrollBar widget, a scroll bar with rounded
+edges.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_fill_color"></a></p>
+<h4 id="bar_fill_color_1">bar_fill_color</h4>
+<p>The fill color of the scroll bar.</p>
+<p>The color must be given as RGBA values, each between 0 and 1.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_border_color"></a></p>
+<h4 id="bar_border_color_1">bar_border_color</h4>
+<p>The border color of the scroll bar.</p>
+<p>The color must be given as RGBA values, each between 0 and 1.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_radius"></a></p>
+<h4 id="bar_radius">bar_radius</h4>
+<p>The radius of the scroll bar's corners.</p>
+<p>The scroll bar can have rounded corners. The list values
+correspond to the corners as follows:
+[upper left, upper right, lower right, lower left]</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_x"></a></p>
+<h4 id="scroll_x">scroll_x</h4>
+<pre><code class="language-python"> | @property
+ | scroll_x()
+</code></pre>
+<p>Returns the scroll_x value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_y"></a></p>
+<h4 id="scroll_y">scroll_y</h4>
+<pre><code class="language-python"> | @property
+ | scroll_y()
+</code></pre>
+<p>Returns the scroll_y value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.vbar"></a></p>
+<h4 id="vbar">vbar</h4>
+<pre><code class="language-python"> | @property
+ | vbar()
+</code></pre>
+<p>Returns the vbar value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.smooth_scroll_end"></a></p>
+<h4 id="smooth_scroll_end">smooth_scroll_end</h4>
+<pre><code class="language-python"> | @property
+ | smooth_scroll_end()
+</code></pre>
+<p>Returns value smooth_scroll_end of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.viewport_size"></a></p>
+<h4 id="viewport_size">viewport_size</h4>
+<pre><code class="language-python"> | @property
+ | viewport_size()
+</code></pre>
+<p>Returns the viewport_size value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_wheel_distance"></a></p>
+<h4 id="scroll_wheel_distance">scroll_wheel_distance</h4>
+<pre><code class="language-python"> | @property
+ | scroll_wheel_distance()
+</code></pre>
+<p>Returns scroll_wheel_distance of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_type"></a></p>
+<h4 id="scroll_type">scroll_type</h4>
+<pre><code class="language-python"> | @property
+ | scroll_type()
+</code></pre>
+<p>Returns the scroll_type value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_timeout"></a></p>
+<h4 id="scroll_timeout">scroll_timeout</h4>
+<pre><code class="language-python"> | @property
+ | scroll_timeout()
+</code></pre>
+<p>Returns the scroll_timeout value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_distance"></a></p>
+<h4 id="scroll_distance">scroll_distance</h4>
+<pre><code class="language-python"> | @property
+ | scroll_distance()
+</code></pre>
+<p>Returns the scroll_distance value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.hbar"></a></p>
+<h4 id="hbar">hbar</h4>
+<pre><code class="language-python"> | @property
+ | hbar()
+</code></pre>
+<p>Returns the hbar value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.effect_y"></a></p>
+<h4 id="effect_y">effect_y</h4>
+<pre><code class="language-python"> | @property
+ | effect_y()
+</code></pre>
+<p>Returns the effect_y value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.effect_x"></a></p>
+<h4 id="effect_x">effect_x</h4>
+<pre><code class="language-python"> | @property
+ | effect_x()
+</code></pre>
+<p>Returns the effect_x value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.effect_cls"></a></p>
+<h4 id="effect_cls">effect_cls</h4>
+<pre><code class="language-python"> | @property
+ | effect_cls()
+</code></pre>
+<p>Returns the effect_cls value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_pos_y"></a></p>
+<h4 id="bar_pos_y">bar_pos_y</h4>
+<pre><code class="language-python"> | @property
+ | bar_pos_y()
+</code></pre>
+<p>Returns the bar_pos_y value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_pos_x"></a></p>
+<h4 id="bar_pos_x">bar_pos_x</h4>
+<pre><code class="language-python"> | @property
+ | bar_pos_x()
+</code></pre>
+<p>Returns the bar_pos_x value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_pos"></a></p>
+<h4 id="bar_pos">bar_pos</h4>
+<pre><code class="language-python"> | @property
+ | bar_pos()
+</code></pre>
+<p>Returns the bar_pos value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_margin"></a></p>
+<h4 id="bar_margin">bar_margin</h4>
+<pre><code class="language-python"> | @property
+ | bar_margin()
+</code></pre>
+<p>Returns the bar_margin value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.always_overscroll"></a></p>
+<h4 id="always_overscroll">always_overscroll</h4>
+<pre><code class="language-python"> | @property
+ | always_overscroll()
+</code></pre>
+<p>Returns always_overscroll value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.do_scroll_y"></a></p>
+<h4 id="do_scroll_y">do_scroll_y</h4>
+<pre><code class="language-python"> | @property
+ | do_scroll_y()
+</code></pre>
+<p>Returns the do_scroll_y value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.do_scroll_x"></a></p>
+<h4 id="do_scroll_x">do_scroll_x</h4>
+<pre><code class="language-python"> | @property
+ | do_scroll_x()
+</code></pre>
+<p>Returns the do_scroll_x value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_width"></a></p>
+<h4 id="bar_width_1">bar_width</h4>
+<pre><code class="language-python"> | @property
+ | bar_width()
+</code></pre>
+<p>Returns the bar_width value of the ScrollView child.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_x"></a></p>
+<h4 id="scroll_x_1">scroll_x</h4>
+<pre><code class="language-python"> | @scroll_x.setter
+ | scroll_x(valuex)
+</code></pre>
+<p>Sets the scroll_x value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>valuex</code> - The value to be set for the x-direction.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_y"></a></p>
+<h4 id="scroll_y_1">scroll_y</h4>
+<pre><code class="language-python"> | @scroll_y.setter
+ | scroll_y(valuey)
+</code></pre>
+<p>Sets the scroll_y value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>valuey</code> - The value to be set for the y-direction.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.vbar"></a></p>
+<h4 id="vbar_1">vbar</h4>
+<pre><code class="language-python"> | @vbar.setter
+ | vbar(value)
+</code></pre>
+<p>Sets the vbar value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for vbar.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.smooth_scroll_end"></a></p>
+<h4 id="smooth_scroll_end_1">smooth_scroll_end</h4>
+<pre><code class="language-python"> | @smooth_scroll_end.setter
+ | smooth_scroll_end(value)
+</code></pre>
+<p>Sets the smooth_scroll_end value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for smooth_scroll_end.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.viewport_size"></a></p>
+<h4 id="viewport_size_1">viewport_size</h4>
+<pre><code class="language-python"> | @viewport_size.setter
+ | viewport_size(value)
+</code></pre>
+<p>Sets the viewport_size value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for viewport_size.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_wheel_distance"></a></p>
+<h4 id="scroll_wheel_distance_1">scroll_wheel_distance</h4>
+<pre><code class="language-python"> | @scroll_wheel_distance.setter
+ | scroll_wheel_distance(value)
+</code></pre>
+<p>Sets the scroll_wheel_distance value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for scroll_wheel_distance.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_type"></a></p>
+<h4 id="scroll_type_1">scroll_type</h4>
+<pre><code class="language-python"> | @scroll_type.setter
+ | scroll_type(value)
+</code></pre>
+<p>Sets the scroll_type value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for scroll_type.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_timeout"></a></p>
+<h4 id="scroll_timeout_1">scroll_timeout</h4>
+<pre><code class="language-python"> | @scroll_timeout.setter
+ | scroll_timeout(value)
+</code></pre>
+<p>Sets the scroll_timeout value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for scroll_timeout.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_distance"></a></p>
+<h4 id="scroll_distance_1">scroll_distance</h4>
+<pre><code class="language-python"> | @scroll_distance.setter
+ | scroll_distance(value)
+</code></pre>
+<p>Sets the scroll_distance value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for scroll_distance.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.hbar"></a></p>
+<h4 id="hbar_1">hbar</h4>
+<pre><code class="language-python"> | @hbar.setter
+ | hbar(value)
+</code></pre>
+<p>Sets the hbar value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for hbar.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.effect_y"></a></p>
+<h4 id="effect_y_1">effect_y</h4>
+<pre><code class="language-python"> | @effect_y.setter
+ | effect_y(value)
+</code></pre>
+<p>Sets the effect_y value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for effect_y.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.effect_x"></a></p>
+<h4 id="effect_x_1">effect_x</h4>
+<pre><code class="language-python"> | @effect_x.setter
+ | effect_x(value)
+</code></pre>
+<p>Sets the effect_x value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for effect_x.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.effect_cls"></a></p>
+<h4 id="effect_cls_1">effect_cls</h4>
+<pre><code class="language-python"> | @effect_cls.setter
+ | effect_cls(value)
+</code></pre>
+<p>Sets the effect_cls value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for effect_cls.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_pos_y"></a></p>
+<h4 id="bar_pos_y_1">bar_pos_y</h4>
+<pre><code class="language-python"> | @bar_pos_y.setter
+ | bar_pos_y(value)
+</code></pre>
+<p>Sets the bar_pos_y value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for bar_pos_y.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_pos_x"></a></p>
+<h4 id="bar_pos_x_1">bar_pos_x</h4>
+<pre><code class="language-python"> | @bar_pos_x.setter
+ | bar_pos_x(value)
+</code></pre>
+<p>Sets the bar_pos_x value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for bar_pos_x.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_pos"></a></p>
+<h4 id="bar_pos_1">bar_pos</h4>
+<pre><code class="language-python"> | @bar_pos.setter
+ | bar_pos(value)
+</code></pre>
+<p>Sets the bar_pos value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for bar_pos.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_margin"></a></p>
+<h4 id="bar_margin_1">bar_margin</h4>
+<pre><code class="language-python"> | @bar_margin.setter
+ | bar_margin(value)
+</code></pre>
+<p>Sets the bar_margin value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for bar_margin.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.always_overscroll"></a></p>
+<h4 id="always_overscroll_1">always_overscroll</h4>
+<pre><code class="language-python"> | @always_overscroll.setter
+ | always_overscroll(value)
+</code></pre>
+<p>Sets the always_overscroll value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for always_overscroll.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.do_scroll_y"></a></p>
+<h4 id="do_scroll_y_1">do_scroll_y</h4>
+<pre><code class="language-python"> | @do_scroll_y.setter
+ | do_scroll_y(value)
+</code></pre>
+<p>Sets the do_scroll_y value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for do_scroll_y.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.do_scroll_x"></a></p>
+<h4 id="do_scroll_x_1">do_scroll_x</h4>
+<pre><code class="language-python"> | @do_scroll_x.setter
+ | do_scroll_x(value)
+</code></pre>
+<p>Sets the do_scroll_x value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for do_scroll_x.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.bar_width"></a></p>
+<h4 id="bar_width_2">bar_width</h4>
+<pre><code class="language-python"> | @bar_width.setter
+ | bar_width(value)
+</code></pre>
+<p>Sets the bar_width value of the ScrollView child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>value</code> - The value to be set for bar_width.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.add_widget"></a></p>
+<h4 id="add_widget">add_widget</h4>
+<pre><code class="language-python"> | add_widget(widget: _List, index: int = 0, canvas=None)
+</code></pre>
+<p>Passes on the given child to the ScrollView widget.</p>
+<p>During initialization of the widget's own child, i.e. the
+ScrollView and the ScrollBar widgets, the given widgets are
+added as children of the ScrollArea widget. After initialization
+is complete a widget added from outside the ScrollArea widget
+will be passed on to the ScrollView widget and added there.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>widget</code> - The widget to be added as child.</li>
+<li><code>index</code> - The position in the widget tree. Zero means that
+  later widgets will be drawn on top of widgets added earlier.
+  See Kivy's documentation for details.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.remove_widget"></a></p>
+<h4 id="remove_widget">remove_widget</h4>
+<pre><code class="language-python"> | remove_widget(widget: _Widget)
+</code></pre>
+<p>Removes a child widget from ScrollArea or ScrollView widget.</p>
+<p>After initialization, the command is passed on to the ScrollView
+widget. Before initialization, the command is applied to the
+ScrollArea widget itself.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>widget</code> - The widget to be removed.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.clear_widgets"></a></p>
+<h4 id="clear_widgets">clear_widgets</h4>
+<pre><code class="language-python"> | clear_widgets(children: _List = None)
+</code></pre>
+<p>Removes all children from ScrollArea or ScrollView widget.</p>
+<p>After intialization, the command is passed on to the ScrollView
+widget. Before initialization, the command is applied to the
+ScrollArea widget itself.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>children</code> - A list of the current widget's child widgets.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.convert_distance_to_scroll"></a></p>
+<h4 id="convert_distance_to_scroll">convert_distance_to_scroll</h4>
+<pre><code class="language-python"> | convert_distance_to_scroll(deltax: int, deltay: int)
+</code></pre>
+<p>Converts a distance in pixels to a scroll distance.</p>
+<p>This method provides direct access to the interface of the
+ScrollView child widget. For functional details see Kivy's
+documentation.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.scroll_to"></a></p>
+<h4 id="scroll_to">scroll_to</h4>
+<pre><code class="language-python"> | scroll_to(widget: _Widget, padding: int = 10, animate: bool = True)
+</code></pre>
+<p>Scrolls the viewport to the given widget.</p>
+<p>This method provides direct access to the interface of the
+ScrollView child widget. For functional details see Kivy's
+documentation.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>widget</code> - The widget to scroll to.</li>
+<li><code>padding</code> - The padding around the widget to scroll to.</li>
+<li><code>animate</code> - Set to True for a scroll animation. False
+  otherwise.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.update_from_scroll"></a></p>
+<h4 id="update_from_scroll">update_from_scroll</h4>
+<pre><code class="language-python"> | update_from_scroll(*largs)
+</code></pre>
+<p>Reposition the content according to scroll_x and scroll_y.</p>
+<p>This method provides direct access to the interface of the
+ScrollView child widget. For functional details see Kivy's
+documentation.</p>
+<p><a name="cucoloris._scrollarea.ScrollArea.on_touch_down"></a></p>
+<h4 id="on_touch_down_1">on_touch_down</h4>
+<pre><code class="language-python"> | on_touch_down(touch: _MotionEvent)
+</code></pre>
+<p>Callback method for touch / click events.</p>
+<p>If the application detects a touch or click, this method is
+called. It passes on the given touch motion event information
+to the ScrollView widget child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>touch</code> - Motion event with details about the touch event.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.on_touch_move"></a></p>
+<h4 id="on_touch_move_1">on_touch_move</h4>
+<pre><code class="language-python"> | on_touch_move(touch: _MotionEvent)
+</code></pre>
+<p>Callback method for touch / cursor motion events.</p>
+<p>If the application detects a cursor or touch motion, this method
+is called. It passes on the given motion event information
+to the ScrollView widget child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>touch</code> - Motion event with details.</li>
+</ul>
+<p><a name="cucoloris._scrollarea.ScrollArea.on_touch_up"></a></p>
+<h4 id="on_touch_up_1">on_touch_up</h4>
+<pre><code class="language-python"> | on_touch_up(touch: _MotionEvent)
+</code></pre>
+<p>Callback method for touch / cursor release events.</p>
+<p>If the application detects a cursor or touch release, this
+method is called. It passes on the given release event
+information to the ScrollView widget child.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>touch</code> - Motion event with details.</li>
+</ul>
+
+<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+  <li class="last-updated-holder displayDate loading">
+    <span class="last-updated-text">Last updated:</span>
+    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date"></time>
+  </li>
+<!--
+  <li class="readingTime">
+    2 minutes to read
+  </li>
+-->
+  <li class="contributors-holder">
+    <span class="contributors-text">Contributors</span>
+    <ul class="contributors" data-bi-name="contributors"></ul>
+  </li>
+</ul>
+</div>
+        <div class="col-md-3"><div class="navbar-light navbar-expand-md hidden-print sticky-top sticky-offset" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    <div id="toc-collapse" class="navbar-collapse collapse card">
+        <ul class="nav flex-column bs-sidenav">
+            <li class="nav-item main"><a class="nav-link" href="#cucoloris">cucoloris</a></li>
+            <li class="nav-item main"><a class="nav-link" href="#cucoloris_settings">cucoloris._settings</a></li>
+                <li class="nav-item">
+                    <a href="#settings-objects" class="nav-link">Settings Objects</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#cucolorisplaininput">cucoloris.plaininput</a></li>
+                <li class="nav-item">
+                    <a href="#plaininput-objects" class="nav-link">PlainInput Objects</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#cucoloris_scrollbar">cucoloris._scrollbar</a></li>
+                <li class="nav-item">
+                    <a href="#scrollbar-objects" class="nav-link">ScrollBar Objects</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#cucolorisbackground">cucoloris.background</a></li>
+                <li class="nav-item">
+                    <a href="#background-objects" class="nav-link">Background Objects</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#cucolorismarkupinput">cucoloris.markupinput</a></li>
+                <li class="nav-item">
+                    <a href="#markupinput-objects" class="nav-link">MarkupInput Objects</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#cucolorisformcontrol">cucoloris.formcontrol</a></li>
+                <li class="nav-item">
+                    <a href="#formcontrol-objects" class="nav-link">FormControl Objects</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#cucoloris_colorarea">cucoloris._colorarea</a></li>
+                <li class="nav-item">
+                    <a href="#colorarea-objects" class="nav-link">ColorArea Objects</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#cucoloris_colorlabel">cucoloris._colorlabel</a></li>
+                <li class="nav-item">
+                    <a href="#colorlabel-objects" class="nav-link">ColorLabel Objects</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#cucoloris_box">cucoloris._box</a></li>
+                <li class="nav-item">
+                    <a href="#box-objects" class="nav-link">Box Objects</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#cucolorisbutton">cucoloris.button</a></li>
+                <li class="nav-item">
+                    <a href="#btn-objects" class="nav-link">Btn Objects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#solidbtn-objects" class="nav-link">SolidBtn Objects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#solidlinkbtn-objects" class="nav-link">SolidLinkBtn Objects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#outlinebtn-objects" class="nav-link">OutlineBtn Objects</a>
+                </li>
+            <li class="nav-item main"><a class="nav-link" href="#cucoloris_scrollarea">cucoloris._scrollarea</a></li>
+                <li class="nav-item">
+                    <a href="#scrollarea-objects" class="nav-link">ScrollArea Objects</a>
+                </li>
+        </ul>
+    </div>
+</div></div>
+      </div>
+      </div>
+
+      <footer class="col-md-12">
+	<hr>
+	<div class="container">
+	</div>
+      </footer>
+      <script>
+	var base_url = "..",
+            shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+      </script>
+      <script src="../js/base.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+      <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="h4 modal-title">Keyboard Shortcuts</p>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
