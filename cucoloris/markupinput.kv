@@ -1,0 +1,89 @@
+#:kivy 2.0
+#: import utils kivy.utils
+
+##
+# \brief Class that provides a text field imilar to Kivy's TextInput widget with markup support.
+#
+# \details If the text field has focus, the text can be edited in plain text mode. Markup as described in
+# https://kivy.org/doc/stable/api-kivy.core.text.markup.html can be mixed with other text. Once focus is lost,
+# The text field is displayed with all markup formatting applied. This is done by overlaying a TextField widget
+# with a Label widget. Opacity of the two is toggled between zero and one depending on whether to display
+# plain or formatted text.
+<MarkupInput>:
+    size:                       [400, 200]
+    size_hint:                  None, None
+
+    # Text
+    halign:                     'left'
+    valign:                     'top'
+
+    # Colors
+    foreground_color:           utils.get_color_from_hex('#212529ff')
+    cursor_color:               utils.get_color_from_hex('#212529ff')
+    selection_color:            utils.get_color_from_hex('#0078d740')
+    hint_text_color:            utils.get_color_from_hex('#6c757dff')
+
+    # Text
+    text:                       ''
+    hint_text:                  'This is a hint text'
+    font_size:                  '16sp'
+    suggestion_text:            ''
+
+    # Private
+    _edit:                      edit
+    _display:                   display
+
+    # Misc
+    background_color:           [0, 0, 0, 0]
+    background_active:          ''
+    background_normal:          ''
+    border:                     [0, 0, 0, 0]
+    padding:                    [0, 0]
+    multiline:                  True
+    write_tab:                  False
+    line_spacing:               2
+    line_height:                edit.line_height
+    minimum_height:             edit.minimum_height
+    markup:                     True
+
+    PlainInput:
+        id:                     edit
+        text:                   root.text
+        size:                   root.size
+        pos:                    root.pos
+        halign:                 root.halign
+        valign:                 root.valign
+        foreground_color:       root.foreground_color
+        cursor_color:           root.cursor_color
+        hint_text_color:        root.hint_text_color
+        hint_text:              root.hint_text
+        suggestion_text:        root.suggestion_text
+
+        font_size:              root.font_size
+        size_hint:              root.size_hint
+        text:                   root.text
+        background_color:       root.background_color
+        background_active:      root.background_active
+        background_normal:      root.background_normal
+        border:                 root.border
+        padding:                root.padding
+        multiline:              root.multiline
+        selection_color:        root.selection_color
+        write_tab:              root.write_tab
+        line_spacing:           root.line_spacing
+
+    Label:
+        id:                     display
+        pos:                    [edit.pos[0] + edit.padding[0], edit.pos[1] - edit.padding[1]]
+        markup:                 True
+        halign:                 root.halign
+        valign:                 root.valign
+        text_size:              edit.size if edit.multiline else [None, edit.size[1]]
+        text:                   edit.text
+        color:                  edit.foreground_color
+        size:                   edit.size if edit.multiline else [self.texture_size[0], edit.size[1]]
+        font_size:              edit.font_size
+        font_name:              edit.font_name
+        line_height:            (edit.line_height + edit.line_spacing) / edit.line_height
+
+    

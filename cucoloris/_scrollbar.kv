@@ -1,0 +1,21 @@
+#:kivy 2.0
+#: import utils kivy.utils
+
+##
+# \brief Class for drawing a text input widget similar to Bootstrap's form-control class.
+<ScrollBar>:
+    # Geometry
+    radius:                         [4, 4, 4, 4]
+    bar_width:                      12
+    bar_length:                     100
+    bar_orientation:                'horizontal'
+    border_width:                   0
+    shadow_width:                   0
+
+
+    border_color:                   utils.get_color_from_hex('#cdcdcdff')
+    fill_color:                     utils.get_color_from_hex('#cdcdcdff')
+    
+        
+    # Driven fields
+    size:                           [self.bar_width, self.bar_length] if self.bar_orientation == 'vertical' else [self.bar_length, self.bar_width]

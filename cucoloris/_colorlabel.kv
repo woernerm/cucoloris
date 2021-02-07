@@ -1,0 +1,13 @@
+#:kivy 2.0
+#: import utils kivy.utils
+
+##
+# \brief Class for a label widget that can shift its color.
+# \details The color shift is animated.
+<ColorLabel>:
+    nominal_color:  [1, 1, 1, 1]
+    text:           "My Label"
+    color:          [1, 1, 1, 1]
+    size_hint:      None, None
+    transition:     0.15
+

@@ -1,0 +1,30 @@
+#:kivy 2.0
+#: import utils kivy.utils
+#: import Window kivy.core.window.Window
+
+<Background>:
+    color: [1, 1, 1]
+
+    canvas:
+        Color:
+            rgb: root.color
+        Rectangle:
+            pos: 0,0
+            size: Window.size
+
+<WhiteBackground@Background>:
+    color: utils.get_color_from_hex('#ffffffff')
+
+<LightBackground@Background>:
+    color: utils.get_color_from_hex('#f8f9faff')
+
+<DarkBackground@Background>:
+    color: utils.get_color_from_hex('#212529ff')
+
+<ColoristBackground@Background>:
+    color: [0.5, 0.5, 0.5, 1]
+
+<ChillBackground@Background>:
+    color: utils.get_color_from_hex('#2D3A54ff')
+
+    

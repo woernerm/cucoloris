@@ -1,0 +1,45 @@
+#:kivy 2.0
+#: import utils kivy.utils
+
+
+##
+# \brief This class is essentially a Kivy ScrollView. However, its scroll bar has rounded edges to fit Bootstrap-like widgets.
+<ScrollArea>:
+    size_hint:                      1, 1
+    bar_fill_color:                 utils.get_color_from_hex('#cdcdcdff')
+    bar_border_color:               utils.get_color_from_hex('#cdcdcdff')
+    
+    size:                           [scroll.width, scroll.height]
+
+    bar_radius:                     [4, 4, 4, 4]
+
+    _scroll:                        scroll
+
+    ScrollView:
+        id: scroll
+        size_hint:                  root.size_hint
+        pos:                        root.pos
+        size:                       root.size
+        bar_color:                  [0, 0, 0, 0]
+        bar_inactive_color:         [0, 0, 0, 0]
+
+    ScrollBar:
+        id: bar_vertical
+        radius:                     root.bar_radius
+        bar_length:                 (root.size[1] * root.size[1] / scroll.viewport_size[1]) if scroll.viewport_size[1] > 0 else 0
+        bar_width:                  scroll.bar_width
+        bar_orientation:            'vertical'
+        opacity:                    0 if scroll.viewport_size[1] <= root.size[1] else 1
+        pos:                        [root.pos[0] + root.size[0] - self.bar_width, root.pos[1] + scroll.scroll_y * (root.size[1]-self.bar_length)]
+        border_color:               root.bar_border_color
+        fill_color:                 root.bar_fill_color
+       
+
+
+
+
+
+
+
+
+    

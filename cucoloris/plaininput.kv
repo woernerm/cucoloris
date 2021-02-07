@@ -1,0 +1,39 @@
+#:kivy 2.0
+#: import utils kivy.utils
+
+##
+# \brief Class that provides a text input area.
+#
+# \details Although there is already a textinput provided in Kivy, there seems to be a bug in that
+# widget's cursor position (at least in kivy 2.0). If one types in text and reaches the end of a 
+# non-multiline textinput, the cursor may overflow the textinput, i.e. the cursor is outside the 
+# textinput widget. This is even more present, if a long text is pasted into the widget. Then, 
+# the cursor will be way outside the widget. To work around that issue, this class inherits from 
+# Kivy's textinput and overwrites the necessary function. <br/>
+# The cursor position is compared with the position of the right border of the textinput. If the
+# cursor is right of the textinput, the cursor is moved to the left and to the right. This will put the
+# cursor back into the confines of the textinput. Since the movement is first left, then right, there
+# will be no movement in sum. 
+<PlainInput>:
+    halign:                 'left'
+    valign:                 'top'
+    foreground_color:       utils.get_color_from_hex('#212529ff')
+    cursor_color:           utils.get_color_from_hex('#212529ff')
+    hint_text_color:        utils.get_color_from_hex('#6c757dff')
+    selection_color:        utils.get_color_from_hex('#0078d740')
+
+    text:                   ''
+    hint_text:              'This is a hint text'
+    font_size:              '16sp'
+    suggestion_text:        ''
+    size_hint:              None, None
+    background_color:       [0, 0, 0, 0]
+    background_active:      ''
+    background_normal:      ''
+    border:                 [0, 0, 0, 0]
+    padding:                [0, 0]
+    multiline:              False
+    write_tab:              False
+    line_spacing:           2
+
+    

@@ -1,0 +1,245 @@
+#:kivy 2.0
+#: import utils kivy.utils
+
+
+###############################################################################
+############################# SOLID COLOR BUTTONS #############################
+###############################################################################
+
+##
+# \brief Layout for drawing a touchable / clickable button.
+<Btn>:
+    # Geometry
+    size:               [label.texture_size[0] + root.padding[0]*2 + root.shadow_width*2, label.texture_size[1] + root.padding[1]*2 + root.shadow_width*2]
+    radius:             [4, 4, 4, 4]
+    border_width:       0
+    padding:            [14, 8]
+    size_hint:          None, None    
+
+    # Text
+    text:               'Button'
+    font_size:          '16sp'
+    underline:          False
+
+    # Default Color
+    fill_color:         utils.get_color_from_hex('#0d6efdff')
+    border_color:       utils.get_color_from_hex('#0d6efdff')
+    text_color:         utils.get_color_from_hex('#ffffffff')
+    shadow_color:       utils.get_color_from_hex('#0d6efd6c')
+    
+    # Action Color
+    hover_fill:         [0, 0, -0.15]
+    press_fill:         [0, 0, -0.2]
+    hover_text:         [0, 0, 0]
+    press_text:         [0, 0, 0]
+    
+    # Misc
+    transition:         0.15
+
+    _label:             label
+
+    ColorLabel:
+        id:             label
+        pos:            root.pos
+        text:           root.text
+        size:           root.size
+        font_size:      root.font_size
+        nominal_color:  root.text_color
+        underline:      root.underline
+
+##
+# \brief Layout for a button for Boostrap's btn-primary.
+<BtnPrimary@SolidBtn>:
+    text:               'Primary'
+    fill_color:         utils.get_color_from_hex('#0d6efdff')
+    shadow_color:       utils.get_color_from_hex('#0d6efd6c')
+
+##
+# \brief Layout for Bootstrap's btn-secondary.
+<BtnSecondary@SolidBtn>:
+    text:               'Secondary'
+    fill_color:         utils.get_color_from_hex('#6c757dff')
+    shadow_color:       utils.get_color_from_hex('#6c757d6c')
+
+##
+# \brief Layout for Bootstrap's btn-success.
+<BtnSuccess@SolidBtn>:
+    text:               'Success'
+    fill_color:         utils.get_color_from_hex('#198754ff')
+    shadow_color:       utils.get_color_from_hex('#1987546c')
+
+##
+# \brief Layout for Bootstrap's btn-danger.
+<BtnDanger@SolidBtn>:
+    text:               'Danger'
+    fill_color:         utils.get_color_from_hex('#dc3545ff')
+    shadow_color:       utils.get_color_from_hex('#dc35456c')
+
+##
+# \brief Layout for Bootstrap's btn-warning.
+<BtnWarning@SolidBtn>:
+    text:               'Warning'
+    fill_color:         utils.get_color_from_hex('#ffc107ff')
+    text_color:         utils.get_color_from_hex('#00000')
+    shadow_color:       utils.get_color_from_hex('#ecbb2974')
+    hover_fill:         [0, -0.147, 0]
+    press_fill:         [0, -0.147, 0]
+
+##
+# \brief Layout for Bootstrap's btn-info.
+<BtnInfo@SolidBtn>:
+    text:               'Info'
+    fill_color:         utils.get_color_from_hex('#0dcaf0ff')
+    text_color:         utils.get_color_from_hex('#00000')
+    shadow_color:       utils.get_color_from_hex('#0dcaf06c')
+    hover_fill:         [0, -0.147, 0]
+    press_fill:         [0, -0.197, 0.012]
+
+##
+# \brief Layout for Bootstrap's btn-light.
+<BtnLight@SolidBtn>:
+    text:               'Light'
+    fill_color:         utils.get_color_from_hex('#f8f9faff')
+    text_color:         utils.get_color_from_hex('#00000')
+    shadow_color:       utils.get_color_from_hex('#e9e9eaff')
+    hover_fill:         [0, 0, 0]
+    press_fill:         [0, 0, 0]
+
+##
+# \brief Layout for Bootstrap's btn-dark.
+<BtnDark@SolidBtn>:
+    text:               'Dark'
+    fill_color:         utils.get_color_from_hex('#212529ff')
+    shadow_color:       utils.get_color_from_hex('#2125296c')
+
+##
+# \brief Layout for Bootstrap's btn-link.
+<BtnLink@SolidLinkBtn>:
+    text:               'Link'
+    fill_color:         utils.get_color_from_hex('#ffffffff')
+    text_color:         utils.get_color_from_hex('#007bffff')
+    shadow_color:       utils.get_color_from_hex('#0d6efd40')
+    hover_fill:         [0, 0, 0]
+    press_fill:         [0, 0, 0]
+    hover_text:         [0, 0, -0.15]
+    press_text:         [0, 0, -0.2]
+    underline:          True
+
+
+###############################################################################
+############################### OUTLINE BUTTONS ###############################
+###############################################################################
+
+##
+# \brief Layout for Bootstrap's btn-outline-primary.
+<BtnOutlinePrimary@OutlineBtn>:
+    text:               'Primary'
+    border_width:       1
+    fill_color:         utils.get_color_from_hex('#ffffffff')
+    border_color:       utils.get_color_from_hex('#0d6efdff')
+    shadow_color:       utils.get_color_from_hex('#0d6efd6c')
+    text_color:         utils.get_color_from_hex('#0d6efdff')
+    hover_fill:         utils.get_color_from_hex('#0d6efdff')
+    hover_text:         utils.get_color_from_hex('#ffffffff')
+    press_fill:         utils.get_color_from_hex('#0d6efdff')
+    press_text:         utils.get_color_from_hex('#ffffffff')
+
+##
+# \brief Layout for Bootstrap's btn-outline-secondary.
+<BtnOutlineSecondary@OutlineBtn>:
+    text:               'Secondary'
+    border_width:       1
+    fill_color:         utils.get_color_from_hex('#ffffffff')
+    border_color:       utils.get_color_from_hex('#6c757dff')
+    shadow_color:       utils.get_color_from_hex('#6c757d6c')
+    text_color:         utils.get_color_from_hex('#6c757dff')
+    hover_fill:         utils.get_color_from_hex('#6c757dff')
+    hover_text:         utils.get_color_from_hex('#ffffffff')
+    press_fill:         utils.get_color_from_hex('#6c757dff')
+    press_text:         utils.get_color_from_hex('#ffffffff')
+
+##
+# \brief Layout for Bootstrap's btn-outline-success.
+<BtnOutlineSuccess@OutlineBtn>:
+    text:               'Success'
+    border_width:       1
+    fill_color:         utils.get_color_from_hex('#ffffffff')
+    border_color:       utils.get_color_from_hex('#198754ff')
+    shadow_color:       utils.get_color_from_hex('#1987546c')
+    text_color:         utils.get_color_from_hex('#198754ff')
+    hover_fill:         utils.get_color_from_hex('#198754ff')
+    hover_text:         utils.get_color_from_hex('#ffffffff')
+    press_fill:         utils.get_color_from_hex('#198754ff')
+    press_text:         utils.get_color_from_hex('#ffffffff')
+
+##
+# \brief Layout for Bootstrap's btn-outline-danger.
+<BtnOutlineDanger@OutlineBtn>:
+    text:               'Danger'
+    border_width:       1
+    fill_color:         utils.get_color_from_hex('#ffffffff')
+    border_color:       utils.get_color_from_hex('#dc3545ff')
+    shadow_color:       utils.get_color_from_hex('#dc35456c')
+    text_color:         utils.get_color_from_hex('#dc3545ff')
+    hover_fill:         utils.get_color_from_hex('#dc3545ff')
+    hover_text:         utils.get_color_from_hex('#ffffffff')
+    press_fill:         utils.get_color_from_hex('#dc3545ff')
+    press_text:         utils.get_color_from_hex('#ffffffff')
+
+##
+# \brief Layout for Bootstrap's btn-outline-warning.
+<BtnOutlineWarning@OutlineBtn>:
+    text:               'Warning'
+    border_width:       1
+    fill_color:         utils.get_color_from_hex('#ffffffff')
+    border_color:       utils.get_color_from_hex('#ffc107ff')
+    text_color:         utils.get_color_from_hex('#ffc107ff')
+    shadow_color:       utils.get_color_from_hex('#ecbb2974')
+    hover_fill:         utils.get_color_from_hex('#ffc107ff')
+    hover_text:         utils.get_color_from_hex('#000000ff')
+    press_fill:         utils.get_color_from_hex('#ffc107ff')
+    press_text:         utils.get_color_from_hex('#000000ff')
+
+##
+# \brief Layout for Bootstrap's btn-outline-info.
+<BtnOutlineInfo@OutlineBtn>:
+    text:               'Info'
+    border_width:       1
+    fill_color:         utils.get_color_from_hex('#ffffffff')
+    border_color:       utils.get_color_from_hex('#0dcaf0ff')
+    text_color:         utils.get_color_from_hex('#0dcaf0ff')
+    shadow_color:       utils.get_color_from_hex('#0dcaf06c')
+    hover_fill:         utils.get_color_from_hex('#0dcaf0ff')
+    hover_text:         utils.get_color_from_hex('#000000ff')
+    press_fill:         utils.get_color_from_hex('#0dcaf0ff')
+    press_text:         utils.get_color_from_hex('#000000ff')
+
+##
+# \brief Layout for Bootstrap's btn-outline-light.
+<BtnOutlineLight@OutlineBtn>:
+    text:               'Light'
+    border_width:       1
+    fill_color:         utils.get_color_from_hex('#ffffffff')
+    border_color:       utils.get_color_from_hex('#f8f9faff')
+    text_color:         utils.get_color_from_hex('#f8f9faff')
+    shadow_color:       utils.get_color_from_hex('#f8f9faff')
+    hover_fill:         utils.get_color_from_hex('#f8f9faff')
+    hover_text:         utils.get_color_from_hex('#000000ff')
+    press_fill:         utils.get_color_from_hex('#f8f9faff')
+    press_text:         utils.get_color_from_hex('#000000ff')
+
+##
+# \brief Layout for Bootstrap's btn-outline-dark.
+<BtnOutlineDark@OutlineBtn>:
+    text:               'Dark'
+    border_width:       1
+    fill_color:         utils.get_color_from_hex('#ffffffff')
+    border_color:       utils.get_color_from_hex('#212529ff')
+    text_color:         utils.get_color_from_hex('#212529ff')
+    shadow_color:       utils.get_color_from_hex('#2125296c')
+    hover_fill:         utils.get_color_from_hex('#212529ff')
+    hover_text:         utils.get_color_from_hex('#ffffffff')
+    press_fill:         utils.get_color_from_hex('#212529ff')
+    press_text:         utils.get_color_from_hex('#ffffffff')
+
+

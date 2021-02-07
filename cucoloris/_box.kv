@@ -1,0 +1,45 @@
+#:kivy 2.0
+#: import utils kivy.utils
+
+<Box>:
+    # Geometry
+    radius:             [4, 4, 4, 4]
+    border_width:       1
+    shadow_width:       4
+    
+    # Color
+    fill_color:         utils.get_color_from_hex('#0d6efdff')
+    border_color:       utils.get_color_from_hex('#ced4daff')
+    shadow_color:       utils.get_color_from_hex('#c2dbfeff')
+    
+    # Animation
+    transition:         0.15
+
+    # Child Widgets
+    shadow:             _shadow
+    border:             _border
+    fill:               _fill 
+    
+    ColorArea:
+        id:             _shadow
+        color:          root.shadow_color
+        size:           [root.size[0] - root.shadow_width*2, root.size[1] - root.shadow_width*2]
+        radius:         [root.radius[0] + root.shadow_width, root.radius[1] + root.shadow_width, root.radius[2] + root.shadow_width, root.radius[3] + root.shadow_width]
+        transition:     root.transition
+        pos:            [root.pos[0] + root.shadow_width, root.pos[1] + root.shadow_width]
+
+    ColorArea:
+        id:             _border
+        color:          root.border_color
+        pos:            [root.pos[0] + root.shadow_width, root.pos[1] + root.shadow_width]
+        size:           [root.size[0] - root.shadow_width*2, root.size[1] - root.shadow_width*2]
+        radius:         root.radius
+        transition:     root.transition
+
+    ColorArea:
+        id:             _fill
+        color:          root.fill_color
+        pos:            [_border.pos[0] + root.border_width, _border.pos[1] + root.border_width]
+        size:           [_border.size[0] - root.border_width*2, _border.size[1] - root.border_width*2]
+        radius:         [max(_border.radius[0] - root.border_width, 0), max(_border.radius[1] - root.border_width, 0), max(_border.radius[2] - root.border_width, 0), max(_border.radius[3] - root.border_width, 0)]
+        transition:     root.transition

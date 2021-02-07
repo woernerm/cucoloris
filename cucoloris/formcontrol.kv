@@ -1,0 +1,77 @@
+#:kivy 2.0
+#: import utils kivy.utils
+
+##
+# \brief Class for drawing a text input widget similar to Bootstrap's form-control class.
+<FormControl>:
+    # Geometry
+    size:                           [400, self.shadow_width*2 + self.border_width*2 + input.line_height*(root.num_lines) + input.line_spacing * (root.num_lines-1) + root.padding[1]*2]
+    radius:                         [4, 4, 4, 4]
+    border_width:                   1
+    size_hint:                      None, None   
+    padding:                        [12, 7]
+    scroll_bar_width:               14
+    num_lines:                      3
+    line_spacing:                   2
+
+    # Default Color
+    fill_color:                     utils.get_color_from_hex('#ffffffff')
+    border_color_normal:            utils.get_color_from_hex('#ced4daff')
+    text_color:                     utils.get_color_from_hex('#212529ff')
+    shadow_color:                   utils.get_color_from_hex('#c2dbfeff')
+    selection_color:                utils.get_color_from_hex('#0078d740')
+    hint_color:                     utils.get_color_from_hex('#6c757dff')
+    bar_fill_color:                 utils.get_color_from_hex('#cdcdcdff')
+    bar_border_color:               utils.get_color_from_hex('#cdcdcdff')
+
+    # Action Color
+    border_color_focus:             utils.get_color_from_hex('#86b7feff')
+
+    # Content
+    text:                           ''
+    hint_text:                      'This is a hint text'
+    font_size:                      '16sp'
+    suggestion_text:                ''
+    markup:                         True
+
+    # Private
+    _input:                         input
+    _scroll:                        scroll
+
+    _offset_left:                   max(root.padding[0], root.radius[0], root.radius[3])
+    
+    ScrollArea:
+        id: scroll
+        bar_width:                  0 if root.num_lines <= 1 else root.scroll_bar_width
+        size_hint:                  None, None
+        pos:                        [root.border.pos[0] + root.border_width + root._offset_left, root.border.pos[1] + root.border_width]    
+        size:                       [root.border.size[0] - root.border_width*2 - root._offset_left, root.border.size[1] - root.border_width*2]
+        do_scroll_x:                False
+        always_overscroll:          False
+        radius:                     [root.radius[0] - root.border_width, root.radius[1] - root.border_width, root.radius[2] - root.border_width, root.radius[3] - root.border_width]
+        bar_fill_color:             root.bar_fill_color
+        bar_border_color:           root.bar_border_color
+
+
+        MarkupInput:
+            id:                     input
+            size:                   [scroll.size[0] - scroll.bar_width - root.padding[0], max(self.minimum_height, scroll.height)]
+            font_size:              root.font_size
+            size_hint:              None, None
+            text:                   root.text
+            background_color:       [0, 0, 0, 0]
+            background_active:      ''
+            background_normal:      ''
+            border:                 [0, 0, 0, 0]
+            padding:                [0, ((scroll.size[1] - self.line_height)/2 + root._textoffset) if root.num_lines <= 1 else root.padding[1] + root._textoffset]
+            multiline:              False if root.num_lines <= 1 else True
+            foreground_color:       root.text_color
+            cursor_color:           root.text_color
+            selection_color:        root.selection_color
+            hint_text:              root.hint_text
+            write_tab:              False if root.num_lines <= 1 else True
+            line_spacing:           root.line_spacing
+            suggestion_text:        root.suggestion_text
+            hint_text_color:        root.hint_color
+            markup:                 root.markup
+        
