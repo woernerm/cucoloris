@@ -30,22 +30,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install --upgrade build
-        python -m pip install flake8 pytest
-        python -m pip install kivy[base]
         python -m pip install mkdocs
         python -m pip install pydoc-markdown
         python -m pip install mkdocs-bootstrap4
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Build wheels
-      run: |
-        python -m build
     - name: Create documentation
       run: |
         pydoc-markdown
@@ -63,7 +51,7 @@ jobs:
         
         # The name of the user that will be displayed as the author of the commit
         # Default: author of the commit that triggered the run
-        author_name: Automated Build
+        author_name: DocBot
 
         # The email of the user that will be displayed as the author of the commit
         # Default: author of the commit that triggered the run
@@ -79,7 +67,7 @@ jobs:
 
         # The message for the commit
         # Default: 'Commit from GitHub Actions (name of the workflow)'
-        message: 'Commit from Automated Build'
+        message: 'Generate documentation\n\nPrevious commit to main branch triggered automatic\ngeneration of API documentation.'
 
         # The flag used on the pull strategy
         # Default: '--no-rebase'
